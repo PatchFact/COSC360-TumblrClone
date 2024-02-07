@@ -1,14 +1,30 @@
 /* Font imports */
 
-@import url("https://fonts.googleapis.com/css?family=Inter+Display");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Josefin Sans");
 
 /* Global */
 
 :root {
-    --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    --font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --font-family-accent: "Josefin Sans", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helbetica Neue",
+        sans-serif;
 }
 
 body {
     font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-family-accent);
+}
+
+.title {
+    font-size: 5rem;
+    letter-spacing: -0.2rem;
+    font-weight: 900;
 }
