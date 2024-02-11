@@ -1,1 +1,9 @@
 # Design Discussion
+
+For our design, we looked to Tumblr, Instagram and Reddit for inspiration. We wanted the user to have to navigate to as few different places as possible and have the experience of any part of our site to be accessible from wherever the user is. To this end, we made the homepage the main section of the app to view posts, which will be divided between a "Discover" section, which lets users explore all the public content on the site, a "Following" section which only shows posts from followed users, and a "Saved" section which shows users their favourite posts.
+
+We also decided to have a profile sidebar that is accessible from anywhere in the site, which will also contain the login button when the user is not logged in. From here, users can reach their profile, as well as from the navigation bar. In the user profile view, users will be able to see and edit their profile information and see which users they follow as well as which posts they have made. When viewing another user, users will not be able to edit information and will instead have the option to follow or unfollow that person.
+
+We also want to consolidate the post editing process with the viewing and commenting process by having both activities in the same page. If the logged in user is in a post they made they will be able to edit the content of the post. Users will be able to comment on posts. Admins will be able to search for users and be able to delete posts.
+
+We wanted to have a recognisable name and mascot, as well as a theme. We wanted a lighter color scheme, and settles on orange and white. We chose the name "Ara" as it is quick to say and is inspired by the scientific genus name of the Macaw. We chose the Macaw for its colors and ability to speak, as well as its connections to the Amazon rainforest.
