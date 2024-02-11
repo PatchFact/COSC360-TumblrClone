@@ -10,10 +10,8 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 
 ## Esteban
 
--   [ ] Layout document (Planned layout of your page in hardcopy/electronic copy showing elements, sizes, placement – this is the plan for what your site will look like)
-    -   [ ] Examples of each page type in your proposed site
-    -   [ ] Develop styles for pages
--   [ ] Discussion regarding the design and styles of all pages
+-   [x] Layout document (Planned layout of your page in hardcopy/electronic copy showing elements, sizes, placement – this is the plan for what your site will look like)
+-   [x] Discussion regarding the design and styles of all pages
 
 ## Jaidyn
 
