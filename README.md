@@ -15,7 +15,7 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 
 ## Jaidyn
 
--   [ ] Organization of pages (How are pages linked? – site map)
+-   [x] Organization of pages (How are pages linked? – site map)
 
 ## Katie
 
