@@ -12,15 +12,15 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 
 -   [x] Layout document (Planned layout of your page in hardcopy/electronic copy showing elements, sizes, placement – this is the plan for what your site will look like)
 -   [x] Discussion regarding the design and styles of all pages
+-   [ ] Log-In HTML Layout
 
 ## Jaidyn
 
--   [ ] Organization of pages (How are pages linked? – site map)
+-   [x] Organization of pages (How are pages linked? – site map)
+-   [ ] Homepage HTML Layout
+-   [ ] Profile Page HTML Layout
 
 ## Katie
 
 -   [ ] Logic process (How will a user engage with site?): This needs to include all processes for how the user/admin will engage site.
-
-## TBA
-
--   [ ] Develop the pages with client-side validation
+-   [ ] New Post HTML Layout
