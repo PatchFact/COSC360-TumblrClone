@@ -12,7 +12,7 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 
 -   [x] Layout document (Planned layout of your page in hardcopy/electronic copy showing elements, sizes, placement – this is the plan for what your site will look like)
 -   [x] Discussion regarding the design and styles of all pages
--   [ ] Log-In HTML Layout
+-   [x] Log-In HTML Layout
 
 ## Jaidyn
 
