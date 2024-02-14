@@ -50,3 +50,31 @@ nav li img {
     height: 100px;
     width: 100px;
 }
+
+#main {
+    display: flex;
+}
+
+#side-profile {
+    flex: 0.25;
+    height: 600px;
+    background-color: white;
+    margin: 0em 2em 2em 2em;
+}
+
+#feed {
+    flex: 3;
+    background-color: white;
+    height: auto;
+}
+
+.button {
+    display: block;
+    background-color: goldenrod;
+    color: white;
+    padding: 0.5em;
+    text-decoration: none;
+    margin: 2em;
+    text-align: center;
+    border-radius: 0.25em;
+}
