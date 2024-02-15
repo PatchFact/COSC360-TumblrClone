@@ -37,10 +37,6 @@ header {
     font-size: 1.5em;
 }
 
-nav {
-    margin-top: 1em; /* Add margin to the top of the navigation */
-}
-
 nav ul {
     list-style: none;
     padding: 0;
@@ -107,5 +103,10 @@ nav li img {
     border-radius: 0.25em;
     padding: 0.5em;
     box-sizing: border-box; /* Include padding in input width */
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
 }
 
