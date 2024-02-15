@@ -17,8 +17,8 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 ## Jaidyn
 
 -   [x] Organization of pages (How are pages linked? – site map)
--   [ ] Homepage HTML Layout
--   [ ] Profile Page HTML Layout
+-   [x] Homepage HTML Layout
+-   [x] Profile Page HTML Layout
 
 ## Katie
 
