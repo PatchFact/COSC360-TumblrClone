@@ -105,3 +105,8 @@ nav li img {
     box-sizing: border-box; /* Include padding in input width */
 }
 
+#profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
