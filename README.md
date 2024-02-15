@@ -22,5 +22,5 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 
 ## Katie
 
--   [ ] Logic process (How will a user engage with site?): This needs to include all processes for how the user/admin will engage site.
--   [ ] New Post HTML Layout
+-   [x] Logic process (How will a user engage with site?): This needs to include all processes for how the user/admin will engage site.
+-   [x] New Post HTML Layout
