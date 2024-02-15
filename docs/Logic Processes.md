@@ -1,0 +1,11 @@
+# Logic Processes
+
+The user begins by accessing the home page. From here, they can either log in to their account or access the search/filter page. Once the user has logged in, they can also access the profile page or posts page. If they have admin privileges they can also access the admin page. The following paragraphs describe the processes once one of those pages is accessed.
+
+The first process that can be accessed through the home page is the user's profile. On this page, the user can edit their profile, see their followers as well as who's following them and make a post. The edit profile option allows them to change their profile picture or their bio. It also allows them to change their username. The followers/following feature allows the user to see and search through a list of who their following and who is following them. The number of the user's followers and who they are following is also displayed here. The final feature of the profile page is the make-post option. This option allows the user to create text posts, or upload images to post for their followers to see. These posts can then be seen and reviewed on the posts page.
+
+The post feature that can be accessed through the home page allows the user to edit their posts and view or delete the comments other users make on their posts. Examples of edits the users may want to make to their posts include changing the post image or updating the post's text.
+
+The search/filter page allows anyone to view any user's posts. This means the user does not have to be logged in to access this page. It has a tags feature, which allows the user to search posts based on the tags they've been given. It also has tabs for discover, following and saved posts. Discover populates the user's feed with popular posts from other users. Following requires the user to be logged in, so they can access the posts made by the user's they are following. Saved also requires the user to be logged in, so they can view posts they've previously saved.
+
+The final page is the admin page. This can only be reached by site admins and allows the admins to delete any user's posts or comments. Whether a user has admin privileges or not is saved information in the database.
