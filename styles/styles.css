@@ -37,10 +37,6 @@ header {
     font-size: 1.5em;
 }
 
-nav {
-    margin-top: 1em; /* Add margin to the top of the navigation */
-}
-
 nav ul {
     list-style: none;
     padding: 0;
