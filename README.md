@@ -24,3 +24,74 @@ Project proposal can be found [here](./docs/Proposal.pdf).
 
 -   [x] Logic process (How will a user engage with site?): This needs to include all processes for how the user/admin will engage site.
 -   [x] New Post HTML Layout
+
+# Minimal Core Functionality
+
+This is the overall checklist needed for the project
+
+## Minimum Objectives
+
+-   [ ] Posts
+    -   [ ] Home Page
+    -   [ ] Browse posts (registered or unregistered)
+        -   [ ] Asynchronous viewing (AJAX)
+    -   [ ] Register users can
+        -   [ ] Make posts
+            -   [ ] Form validation
+            -   [ ] Security (sanitizing input)
+        -   [ ] Make comments
+    -   [ ] Search for items/posts by keyword (registered or unregistered)
+-   [ ] Deployment
+    -   [ ] Deploy to cosc360.ok.ubc.ca
+-   [ ] Database
+-   [ ] Admin Page
+    -   [ ] Search for user by name, email, post
+    -   [ ] Enable/disable user
+    -   [ ] Edit/remove Posts
+-   [ ] User Functions
+    -   [ ] Login/Register
+    -   [ ] State
+    -   [ ] Register with
+        -   [ ] Email
+        -   [ ] Username
+        -   [ ] Password
+    -   [ ] Profile Page
+        -   [ ] Edit Profile
+            -   [ ] Email
+            -   [ ] Password
+            -   [ ] Username
+            -   [ ] Profile Picture
+            -   [ ] Form validation
+                -   [ ] Security (sanitizing input)
+    -   [ ] Login with Email and Password
+        -   [ ] Form validation
+            -   [ ] Security (sanitizing input)
+    -   [ ] User stays logged in (state)
+-   [ ] Database
+    -   [ ] Design
+    -   [ ] Stores
+        -   [ ] Profile pictures
+        -   [ ] Discussion threads (Posts)
+-   [ ] Server-side
+    -   [ ] Deployment to cosc360.ok.ubc.ca
+    -   [ ] Error handling (404)
+    -   [ ] Breadcrumbs
+-   [ ] Preliminary summary document
+
+## Additional Functionality
+
+-   Search and analysis for topics/items
+-   Hot threads/hot item tracking
+-   Visual display of updates, etc (site usage charts, etc)
+-   Activity by date
+-   Tracking (including utilizing tracking API or your own with visualization tools)
+-   Collapsible items/treads without page reloading
+-   Alerts on page changes
+-   Admin view reports on usage (with filtering)
+-   Styling flourishes
+-   Responsive layout for mobile
+-   Tracking comment history from a user’s perspective
+-   Accessibility
+-   Your choice (this is your opportunity to add additional flourish to your site but will need to be documented in the final report)
+
+-   Probably have to compromise on "Follower/Following" unless we want that to be an additional feature
