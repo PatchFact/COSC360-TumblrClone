@@ -31,6 +31,30 @@ This is the overall checklist needed for the project
 
 ## Minimum Objectives
 
+### Esteban
+
+-   [ ] Database Design
+-   [ ] Login/Register
+    -   [ ] Login
+    -   [ ] User stays logged in (state)
+    -   [ ] Register with
+        -   [ ] Email
+        -   [ ] Username
+        -   [ ] Password
+    -   [ ] Form validation
+    -   [ ] Security
+-   [ ] Profile Page
+    -   [ ] Edit Profile
+        -   [ ] Email
+        -   [ ] Password
+        -   [ ] Username
+        -   [ ] Profile Picture
+            -   [ ] Stored in Database
+        -   [ ] Form validation
+            -   [ ] Security (sanitizing input)
+
+### Katie
+
 -   [ ] Posts
     -   [ ] Home Page
     -   [ ] Browse posts (registered or unregistered)
@@ -41,41 +65,22 @@ This is the overall checklist needed for the project
             -   [ ] Security (sanitizing input)
         -   [ ] Make comments
     -   [ ] Search for items/posts by keyword (registered or unregistered)
--   [ ] Deployment
-    -   [ ] Deploy to cosc360.ok.ubc.ca
--   [ ] Database
+    -   [ ] Database storage
+        -   [ ] Discussion threads (Posts)
+
+### Jaidyn
+
 -   [ ] Admin Page
     -   [ ] Search for user by name, email, post
     -   [ ] Enable/disable user
     -   [ ] Edit/remove Posts
--   [ ] User Functions
-    -   [ ] Login/Register
-    -   [ ] State
-    -   [ ] Register with
-        -   [ ] Email
-        -   [ ] Username
-        -   [ ] Password
-    -   [ ] Profile Page
-        -   [ ] Edit Profile
-            -   [ ] Email
-            -   [ ] Password
-            -   [ ] Username
-            -   [ ] Profile Picture
-            -   [ ] Form validation
-                -   [ ] Security (sanitizing input)
-    -   [ ] Login with Email and Password
-        -   [ ] Form validation
-            -   [ ] Security (sanitizing input)
-    -   [ ] User stays logged in (state)
--   [ ] Database
-    -   [ ] Design
-    -   [ ] Stores
-        -   [ ] Profile pictures
-        -   [ ] Discussion threads (Posts)
 -   [ ] Server-side
-    -   [ ] Deployment to cosc360.ok.ubc.ca
+    -   [ ] Deployment to cosc360.ok.ubc.ca (?)
     -   [ ] Error handling (404)
     -   [ ] Breadcrumbs
+
+### All
+
 -   [ ] Preliminary summary document
 
 ## Additional Functionality
