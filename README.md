@@ -98,5 +98,3 @@ This is the overall checklist needed for the project
 -   Tracking comment history from a user’s perspective
 -   Accessibility
 -   Your choice (this is your opportunity to add additional flourish to your site but will need to be documented in the final report)
-
--   Probably have to compromise on "Follower/Following" unless we want that to be an additional feature
