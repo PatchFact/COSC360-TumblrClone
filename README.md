@@ -43,6 +43,7 @@ This is the overall checklist needed for the project
         -   [ ] Password
     -   [ ] Form validation
     -   [ ] Security
+    -   [ ] Banned users can't log in
 -   [ ] Profile Page
     -   [ ] Edit Profile
         -   [ ] Email
