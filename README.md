@@ -33,7 +33,7 @@ This is the overall checklist needed for the project
 
 ### Esteban
 
--   [ ] Database Design
+-   [x] Database Design
 -   [ ] Login/Register
     -   [ ] Login
     -   [ ] User stays logged in (state)
