@@ -1,6 +1,8 @@
+-- Password for users is password123
+
 INSERT INTO users (username, email, password, logged_in, is_admin, about_me) VALUES
-('JohnDoe', 'johndoe@example.com', 'password123', TRUE, FALSE, 'Just a regular Joe.'),
-('JaneDoe', 'janedoe@example.com', 'password123', FALSE, FALSE, 'Photography enthusiast.'),
+('JohnDoe', 'johndoe@example.com', '$2y$10$RqJGAsRXGNdAJws8JshlwOWxr9ckkH.MMd1uzW7D0hStsEqPE9ZHC', TRUE, FALSE, 'Just a regular Joe.'),
+('JaneDoe', 'janedoe@example.com', '$2y$10$ZVTK4qIikkzLWXhnjkBySeuQ2q/GuceExqRaBe8kuss4YdxkNm0Wi', FALSE, FALSE, 'Photography enthusiast.'),
 ('AdminUser', 'admin@example.com', 'adminpass', TRUE, TRUE, 'The boss.');
 
 INSERT INTO posts (title, body, user_id, visible) VALUES

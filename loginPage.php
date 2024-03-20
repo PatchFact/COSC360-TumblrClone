@@ -17,14 +17,14 @@ require "head.php";
             <form action="login.php" method="post" class="loginPageForm" id="loginForm">
                 <div class="form-group">
                     <label for="input-email">Email address</label>
-                    <input type="email" class="form-control" id="input-email" placeholder="Enter email" required />
+                    <input type="email" class="form-control" id="input-email" name="input-email" placeholder="Enter email" required />
                     <div class="alert alert-danger fade show mt-3" id="emailAlertLogin" style="display: none">
                         Please enter your email address.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="input-password">Password</label>
-                    <input type="password" class="form-control" id="input-password" placeholder="Password" required />
+                    <input type="password" class="form-control" id="input-password" name="input-password" placeholder="Password" required />
                     <div class="alert alert-danger fade show mt-3" id="passwordAlert" style="display: none">
                         Please enter your password.
                     </div>

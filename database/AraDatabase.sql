@@ -21,6 +21,7 @@ CREATE TABLE `users` (
   `profile_picture` longblob,
   `logged_in` bool,
   `is_admin` bool DEFAULT false,
+  `is_banned` bool DEFAULT false,
   `about_me` text,
   `creation_date` timestamp NOT NULL DEFAULT current_timestamp
 );
