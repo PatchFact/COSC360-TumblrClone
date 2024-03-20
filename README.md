@@ -61,6 +61,9 @@ This is the overall checklist needed for the project
         -   [x] Password
     -   [x] Form validation
     -   [x] Security
+    -   [ ] Cannot register existing user
+    -   [ ] Form validation
+    -   [ ] Security
     -   [ ] Banned users can't log in
 -   [ ] Profile Page
     -   [ ] Edit Profile
