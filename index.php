@@ -12,7 +12,7 @@ require "head.php";
     <?php require "navbar.php" ?>
     <div id="main">
         <article id="side-profile">
-            <a href="#" class="button">Log In</a>
+            <a href="loginPage.php" class="button">Log In</a>
         </article>
 
         <article id="feed">

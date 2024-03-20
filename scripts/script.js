@@ -1,9 +1,10 @@
 $(document).ready(function () {
+    // Login
     $("#input-email").blur(function () {
         if (!$(this).val()) {
-            $("#emailAlert").show();
+            $("#emailAlertLogin").show();
         } else {
-            $("#emailAlert").hide();
+            $("#emailAlertLogin").hide();
         }
     });
 
@@ -22,8 +23,51 @@ $(document).ready(function () {
         var password = $("#input-password").val();
 
         if (!isValidEmail(email) || password.trim() === "") {
-            $("#errorAlert").show();
+            $("#errorAlertLogin").show();
             return false;
+        }
+
+        this.submit();
+    });
+
+    $("#new-email").blur(function () {
+        if (!$(this).val()) {
+            $("#emailAlertRegister").show();
+        } else {
+            $("#emailAlertRegister").hide();
+        }
+    });
+
+    $("#new-password").blur(function () {
+        if (!$(this).val()) {
+            $("#passwordAlertNew").show();
+        } else {
+            $("#passwordAlertNew").hide();
+        }
+    });
+
+    $("#verify-password").blur(function () {
+        let passwordNew = $("#new-password").val();
+
+        if (!$(this).val() || passwordNew != $(this).val()) {
+            $("#passwordAlertVerify").show();
+        } else {
+            $("#passwordAlertVerify").hide();
+        }
+    });
+
+    $("#registerForm").submit(function (e) {
+        e.preventDefault();
+
+        let email = $("#new-email").val();
+        let passwordNew = $("#new-password").val();
+        let passwordVerify = $("#verify-password").val();
+
+        if (passwordNew != passwordVerify) {
+            $("#errorAlertRegister").show();
+            return false;
+        } else if (!isValidEmail(email) || passwordNew.trim() === "") {
+            $("passwordAlertVerify").show();
         }
 
         this.submit();

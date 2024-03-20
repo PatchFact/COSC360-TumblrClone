@@ -7,30 +7,26 @@ require "head.php";
 ?>
 
 <body>
+    <?php require "navbar.php" ?>
+
     <div class="loginMain">
-        <div class="d-flex flex-column align-items-center mt-5">
-            <h1><span class="title">Login</span></h1>
+        <div class="d-flex flex-column align-items-center mt-3">
+            <h1 class="title">Login</h1>
         </div>
-        <div class="d-flex flex-column m-5 align-items-center">
-            <form action="login.php" method="post" style="width: 22em" id="loginForm">
+        <div class="d-flex flex-column m-3 align-items-center">
+            <form action="login.php" method="post" class="loginPageForm" id="loginForm">
                 <div class="form-group">
                     <label for="input-email">Email address</label>
                     <input type="email" class="form-control" id="input-email" placeholder="Enter email" required />
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" id="emailAlert" style="display: none">
+                    <div class="alert alert-danger fade show mt-3" id="emailAlertLogin" style="display: none">
                         Please enter your email address.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="input-password">Password</label>
                     <input type="password" class="form-control" id="input-password" placeholder="Password" required />
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" id="passwordAlert" style="display: none">
+                    <div class="alert alert-danger fade show mt-3" id="passwordAlert" style="display: none">
                         Please enter your password.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
                 <small><a href="#" id="password-forgot" class="form-text text-muted mb-3">
@@ -45,43 +41,37 @@ require "head.php";
                     Submit
                 </button>
             </form>
-            <div class="alert alert-danger alert-dismissible fade show mt-3" id="errorAlert" style="display: none" role="alert">
+            <div class="alert alert-danger fade show mt-3" id="errorAlertLogin" style="display: none" role="alert">
                 Please enter a valid email address and password.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
         </div>
 
         <div class="d-flex flex-column align-items-center mt-5">
             <h1><span class="title">Register</span></h1>
         </div>
-        <div class="d-flex flex-column m-5 align-items-center">
-            <form action="login.php" method="post" style="width: 22em" id="loginForm">
+        <div class="d-flex flex-column m-3 align-items-center">
+            <form action="register.php" method="post" class="loginPageForm" id="registerForm">
                 <div class="form-group">
-                    <label for="input-email">Email address</label>
-                    <input type="email" class="form-control" id="input-email" placeholder="Enter email" required />
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" id="emailAlert" style="display: none">
+                    <label for="new-email">Email address</label>
+                    <input type="email" class="form-control" id="new-email" placeholder="Enter email" required />
+                    <div class="alert alert-danger fade show mt-3" id="emailAlertRegister" style="display: none">
                         Please enter your email address.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="input-password">Password</label>
-                    <input type="password" class="form-control" id="input-password" placeholder="Password" required />
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" id="passwordAlert" style="display: none">
-                        Please enter your password.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <label for="new-password">Password</label>
+                    <input type="password" class="form-control" id="new-password" placeholder="Password" required />
+                    <div class="alert alert-danger fade show mt-3" id="passwordAlertNew" style="display: none">
+                        Please enter a password.
                     </div>
                 </div>
-                <small><a href="#" id="password-forgot" class="form-text text-muted mb-3">
-                        Forgot my password
-                    </a>
-                </small>
+                <div class="form-group">
+                    <label for="verify-password">Verify Password</label>
+                    <input type="password" class="form-control" id="verify-password" placeholder="Password" required />
+                    <div class="alert alert-danger fade show mt-3" id="passwordAlertVerify" style="display: none">
+                        Passwords must match.
+                    </div>
+                </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="admin-check" />
                     <label class="form-check-label" for="admin-check">Admin</label>
@@ -90,11 +80,8 @@ require "head.php";
                     Submit
                 </button>
             </form>
-            <div class="alert alert-danger alert-dismissible fade show mt-3" id="errorAlert" style="display: none" role="alert">
+            <div class="alert alert-danger fade show mt-3" id="errorAlertRegister" style="display: none" role="alert">
                 Please enter a valid email address and password.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
         </div>
     </div>
