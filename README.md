@@ -9,10 +9,10 @@ Esteban Martínez, Katie Van Rooyen, Jaidyn Gordon-Mason.
 
 ```
 <?php
-    $dbhost = '127.0.0.1'; // or 'localhost'
-    $dbname = 'your database name';
-    $dbuser = 'your username';
-    $dbpassword = 'your password';
+    define("DBHOST", "localhost");
+    define("DBNAME", "your database name");
+    define("DBUSER", "your user");
+    define("DBPASS", "your password");
 ```
 
 -   Use the provided `AraDatabase.sql` to create the database in MySQL
