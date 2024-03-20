@@ -13,14 +13,14 @@ require "head.php";
 // Placeholder for session user_id. This will be set when you implement the login system.
 $currentUserId = $_SESSION['user_id'] ?? null; // Use null coalescing operator as a placeholder
 
-if ($currentUserId === null) {
+if ($currentUserId === !null) {
     // Redirect to login page if there is no user_id in the session (i.e., not logged in)
     header("Location: loginPage.php");
     exit;
 }
 
 // Check if the current user is an admin
-$query = "SELECT is_admin FROM users WHERE user_id = ?";
+/*$query = "SELECT is_admin FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $currentUserId); // "i" for integer
 $stmt->execute();
@@ -37,8 +37,13 @@ if (!$row['is_admin']) {
     header("Location: index.php");
     exit;
 }
-
+*/
 // Proceed with page content for admins
+?>
+
+<?php
+$pageTitle = "Ara Admin";
+require "head.php";
 ?>
 
 <body>
@@ -52,6 +57,11 @@ if (!$row['is_admin']) {
             </form>
         </article>
     </div>
+    <div id="search-section">
+    <input type="text" id="search-input" placeholder="Search users or posts">
+    <button id="search-button">Search</button>
+    <div id="search-results"></div>
+</div>
 </body>
 
 </html>
