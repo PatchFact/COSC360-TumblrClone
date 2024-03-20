@@ -77,4 +77,7 @@ $(document).ready(function () {
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
+
+    //Admin Logic
 });
+

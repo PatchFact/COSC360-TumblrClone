@@ -5,6 +5,7 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="makePost.php">New Post</a></li>
+            <li><a href="admin.php">Admin</a></li>
         </ul>
     </nav>
 </header>
