@@ -53,14 +53,14 @@ This is the overall checklist needed for the project
 
 -   [x] Database Design
 -   [ ] Login/Register
-    -   [ ] Login
+    -   [x] Login
     -   [ ] User stays logged in (state)
-    -   [ ] Register with
-        -   [ ] Email
-        -   [ ] Username
-        -   [ ] Password
-    -   [ ] Form validation
-    -   [ ] Security
+    -   [x] Register with
+        -   [x] Email
+        -   [x] Username
+        -   [x] Password
+    -   [x] Form validation
+    -   [x] Security
     -   [ ] Banned users can't log in
 -   [ ] Profile Page
     -   [ ] Edit Profile
