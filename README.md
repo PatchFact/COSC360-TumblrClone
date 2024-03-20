@@ -2,6 +2,24 @@
 
 Esteban Martínez, Katie Van Rooyen, Jaidyn Gordon-Mason.
 
+# Setup
+
+-   Copy the files to `htdocs` in your XAMPP folder (you can place them in their own folder inside `htdocs` for organization)
+-   Create a file called `dbDetails.php` with the following structure to connect to your local database
+
+```
+<?php
+    $dbhost = '127.0.0.1'; // or 'localhost'
+    $dbname = 'your database name';
+    $dbuser = 'your username';
+    $dbpassword = 'your password';
+```
+
+-   Use the provided `AraDatabase.sql` to create the database in MySQL
+    -   You can use `testData.sql` to populate the database with example data
+-   Start the database with XAMPP as well as the PHP server
+-   Go to `127.0.0.1/index.php` to start
+
 # Milestone 1 - Proposal
 
 Project proposal can be found [here](./docs/Proposal.pdf).
