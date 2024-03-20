@@ -59,6 +59,7 @@ This is the overall checklist needed for the project
         -   [ ] Email
         -   [ ] Username
         -   [ ] Password
+    -   [ ] Cannot Register Existing User
     -   [ ] Form validation
     -   [ ] Security
     -   [ ] Banned users can't log in
