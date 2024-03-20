@@ -91,7 +91,7 @@ This is the overall checklist needed for the project
 ### Jaidyn
 
 -   [ ] Admin Page
-    -   [ ] Search for user by name, email, post
+    -   [x] Search for user by name, email, post
     -   [ ] Enable/disable user
     -   [ ] Edit/remove Posts
 -   [ ] Server-side
