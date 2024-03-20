@@ -12,7 +12,7 @@ require "head.php";
     <header>
         <nav>
             <ul>
-                <li><img src="images/templogo.jpg" /></li>
+                <li><img src="images/AraLogo.png" /></li>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">New Post</a></li>
