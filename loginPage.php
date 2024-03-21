@@ -53,7 +53,7 @@ require "head.php";
                         Please enter your password.
                     </div>
                 </div>
-                <small><a href="#" id="password-forgot" class="form-text text-muted mb-3">
+                <small><a href="forgot.php" id="password-forgot" class="form-text text-muted mb-3">
                         Forgot my password
                     </a>
                 </small>
