@@ -107,5 +107,43 @@ document.getElementById('search-button').addEventListener('click', function() {
     xhr.send('search=' + encodeURIComponent(searchTerm));
 });
 
+$(document).ready(function () {
+    // Existing code ...
+
+    function editPost(postId) {
+        fetch('editPostForm.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'postId=' + postId
+        })
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('editPostModal').innerHTML = html;
+            // Assuming you have a modal or a specific div to display the edit form
+            // Open the modal or make the div visible. Adjust as needed for your UI framework or setup.
+            $('#editPostModal').modal('show'); // Bootstrap example
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    // Make editPost globally available by attaching it to the window object
+    window.editPost = editPost;
+
+    // Rest of your existing code...
+
 });
 
+function showEditModal() {
+    document.getElementById('editPostModal').style.display = 'block';
+}
+
+function closeEditModal() {
+    document.getElementById('editPostModal').style.display = 'none';
+}
+
+
+});

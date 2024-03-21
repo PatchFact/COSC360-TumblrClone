@@ -1,7 +1,6 @@
 <?php
 require 'db.php';
 require 'head.php';
-session_start();
 
 // Security checks here (ensure the user is logged in and has permission to edit the post)
 
@@ -39,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $postId > 0) {
     ]);
 
     if ($result) {
-        echo "Post updated successfully.";
+        header("Location: admin.php");
         // Redirect or provide a link back to the admin page
     } else {
         echo "An error occurred while updating the post.";

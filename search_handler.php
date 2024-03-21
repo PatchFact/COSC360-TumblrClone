@@ -30,13 +30,16 @@ if (!empty($results)) {
         // Display the user's post if available
         if (!empty($row['title'])) {
             echo '<p>Post Title: ' . htmlspecialchars($row['title']) . ' - Post: ' . htmlspecialchars($row['body']) . '</p>';
-            echo "<form action='deletePost.php' method='post'>
-                <input type='hidden' name='post_id' value='" . htmlspecialchars($row['post_id']) . "'>
-                <input type='submit' value='Delete' onclick='return confirm(\"Are you sure you want to delete this post?\");'>
-              </form>";
-              echo "<a href='editPost.php?postId=" . htmlspecialchars($row['post_id']) . "'>Edit</a>";
-
+            echo "<form action='deletePost.php' method='post' style='display:inline;'>
+                    <input type='hidden' name='post_id' value='" . htmlspecialchars($row['post_id']) . "'>
+                    <input type='submit' value='Delete' onclick='return confirm(\"Are you sure you want to delete this post?\");'>
+                  </form>";
+            echo "<form action='editPost.php' method='get' style='display:inline;'>
+                    <input type='hidden' name='postId' value='" . htmlspecialchars($row['post_id']) . "'>
+                    <input type='submit' value='Edit'>
+                  </form>";
         }
+        
     }
 } else {
     echo '<p>No results found.</p>';

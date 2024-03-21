@@ -5,7 +5,7 @@
 session_start(); // Start the session at the beginning
 
 $pageTitle = "Ara Admin";
-require 'head.php';
+require 'head.php'; // Make sure this includes Bootstrap CSS
 
 // Include your database connection file here
 require 'db.php'; // Adjust the path as necessary
@@ -46,10 +46,43 @@ if (!$result['is_admin']) {
         
     </div>
     <div id="search-section">
-    <input type="text" id="search-input" placeholder="Search users or posts">
-    <button id="search-button">Search</button>
-    <div id="search-results"></div>
-</div>
+        <input type="text" id="search-input" placeholder="Search users or posts">
+        <button id="search-button">Search</button>
+        <div id="search-results"></div>
+    </div>
+
+    <!-- Bootstrap Edit Post Modal -->
+    <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- The edit form will be loaded here by the JavaScript -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        function showEditModal() {
+    document.getElementById('editPostModal').style.display = 'block';
+}
+
+function closeEditModal() {
+    document.getElementById('editPostModal').style.display = 'none';
+}
+    </script>
+
 </body>
 
 </html>
+
