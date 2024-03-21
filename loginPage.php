@@ -2,15 +2,39 @@
 <html lang="en">
 
 <?php
+
+session_start();
 $pageTitle = "Ara Login";
 require "head.php";
+
 ?>
 
 <body>
     <?php require "navbar.php" ?>
 
+    <?php
+    if (isset($_SESSION['error_message'])) {
+        $message = $_SESSION['error_message'];
+        unset($_SESSION['error_message']);
+        serverMessage("danger", $message);
+    }
+
+    if (isset($_SESSION['success_message'])) {
+        $message = $_SESSION['success_message'];
+        unset($_SESSION['success_message']);
+        serverMessage("success", $message);
+    }
+
+    if (isset($_SESSION['warning_message'])) {
+        $message = $_SESSION['warning_message'];
+        unset($_SESSION['warning_message']);
+        serverMessage("warning", $message);
+    }
+
+    ?>
+
     <div class="loginMain">
-        <div class="d-flex flex-column align-items-center mt-3">
+        <div class="d-flex flex-column align-items-center mt-5">
             <h1 class="title">Login</h1>
         </div>
         <div class="d-flex flex-column m-3 align-items-center">

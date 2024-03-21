@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,22 +11,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['password'])) {
-            // if (!$user['is_banned']) {
-            //     session_start();
-            //     $_SESSION['user_id'] = $user['user_id'];
-            //     $_SESSION['username'] = $user['username'];
-            //     header("Location: success.php");
-            //     exit();
-            // } else {
-            //     echo "Your account has been banned.";
-            // }
 
-            echo "yey";
+        if (!$user) {
+            $_SESSION['warning_message'] = "We can't find a user registered with that email. Try creating an account!";
+            header("Location: loginPage.php");
+            exit();
+        }
+
+        if ($user && password_verify($password, $user['password'])) {
+            if (!$user['is_banned']) {
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['username'] = $user['username'];
+                header("Location: index.php");
+                exit();
+            } else {
+                $_SESSION['error_message'] = "Your account is currently banned. Please contact an administrator.";
+                header("Location: loginPage.php");
+                exit();
+            }
         } else {
-            echo "Invalid email or password.";
+            $_SESSION['error_message'] = "Incorrect email or password. Please try again.";
+            header("Location: loginPage.php");
+            exit();
         }
     } else {
-        echo "Email and password are required.";
+        echo "Something went wrong! Try logging in again, or contact an administrator.";
     }
 }

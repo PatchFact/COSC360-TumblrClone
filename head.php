@@ -1,3 +1,28 @@
+<?php
+function serverMessage($type, $message)
+{
+    $strong = "Nice!";
+
+    if ($type == "danger") {
+        $strong = "Oops!";
+    }
+
+    if ($type == "warning") {
+        $strong = "Hmm";
+    }
+
+    echo "
+        <div class=\"d-flex flex-column align-items-center\">
+            <div class=\"alert alert-$type alert-dismissible fade show\" role=\"alert\" style=\"width: max-content\">
+                <strong>$strong</strong> $message
+                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                    <span aria-hidden=\"true\">&times;</span>
+                </button>
+            </div>
+        </div>";
+};
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
