@@ -30,6 +30,14 @@ $(document).ready(function () {
         this.submit();
     });
 
+    $("#username").blur(function () {
+        if (!$(this).val()) {
+            $("#usernameAlert").show();
+        } else {
+            $("#usernameAlert").hide();
+        }
+    });
+
     $("#new-email").blur(function () {
         if (!$(this).val()) {
             $("#emailAlertRegister").show();
@@ -59,6 +67,7 @@ $(document).ready(function () {
     $("#registerForm").submit(function (e) {
         e.preventDefault();
 
+        let username = $("#username").val();
         let email = $("#new-email").val();
         let passwordNew = $("#new-password").val();
         let passwordVerify = $("#verify-password").val();
@@ -66,7 +75,11 @@ $(document).ready(function () {
         if (passwordNew != passwordVerify) {
             $("#errorAlertRegister").show();
             return false;
-        } else if (!isValidEmail(email) || passwordNew.trim() === "") {
+        } else if (
+            !isValidEmail(email) ||
+            passwordNew.trim() === "" ||
+            username.trim() === ""
+        ) {
             $("passwordAlertVerify").show();
         }
 

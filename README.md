@@ -52,26 +52,33 @@ This is the overall checklist needed for the project
 ### Esteban
 
 -   [x] Database Design
--   [ ] Login/Register
-    -   [ ] Login
-    -   [ ] User stays logged in (state)
-    -   [ ] Register with
-        -   [ ] Email
-        -   [ ] Username
-        -   [ ] Password
-    -   [ ] Cannot Register Existing User
-    -   [ ] Form validation
-    -   [ ] Security
-    -   [ ] Banned users can't log in
+-   [x] User stays logged in (state)
+-   [x] Login/Register
+    -   [x] Login
+        -   [x] Set default pfp
+    -   [x] Register with
+        -   [x] Email
+        -   [x] Username
+        -   [x] Password
+    -   [x] Admin Registration
+    -   [x] Form validation
+    -   [x] Security
+    -   [x] Cannot register existing user
+    -   [x] Form validation
+    -   [x] Security
+    -   [x] Banned users can't log in
 -   [ ] Profile Page
-    -   [ ] Edit Profile
-        -   [ ] Email
-        -   [ ] Password
-        -   [ ] Username
-        -   [ ] Profile Picture
-            -   [ ] Stored in Database
-        -   [ ] Form validation
-            -   [ ] Security (sanitizing input)
+    -   [ ] Display pfp
+    -   [ ] If same profile as logged in user
+        -   [ ] Edit Profile
+            -   [ ] Email
+            -   [ ] Password
+            -   [ ] Username
+            -   [ ] Profile Picture
+                -   [ ] Stored in Database
+            -   [ ] Form validation
+                -   [ ] Security (sanitizing input)
+-   [ ] Forgot password
 
 ### Katie
 
