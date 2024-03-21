@@ -3,7 +3,6 @@
 
 <?php
 
-session_start();
 $pageTitle = "Ara Login";
 require "head.php";
 
@@ -57,11 +56,7 @@ require "head.php";
                         Forgot my password
                     </a>
                 </small>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="admin-check" />
-                    <label class="form-check-label" for="admin-check">Admin</label>
-                </div>
-                <button type="submit" class="btn btn-primary mt-5">
+                <button type="submit" class="btn btn-primary mt-3">
                     Submit
                 </button>
             </form>
@@ -104,10 +99,10 @@ require "head.php";
                     </div>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="admin-check" />
+                    <input type="checkbox" class="form-check-input" id="admin-check" name="admin-check" value="TRUE" />
                     <label class="form-check-label" for="admin-check">Admin</label>
                 </div>
-                <button type="submit" class="btn btn-primary mt-5">
+                <button type="submit" class="btn btn-primary mt-3">
                     Submit
                 </button>
             </form>

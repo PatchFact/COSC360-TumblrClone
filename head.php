@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function serverMessage($type, $message)
 {
     $strong = "Nice!";
