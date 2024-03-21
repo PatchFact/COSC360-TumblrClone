@@ -43,12 +43,7 @@ if (!$result['is_admin']) {
     <?php require "navbar.php" ?>
 
     <div id="main">
-        <article id="search-bar">
-            <form action="search.php" method="post" style="width: fit-content">
-                <input type="text" name="search" placeholder="Search posts">
-                <input type="text" name="filter" placeholder="Filter tags">
-            </form>
-        </article>
+        
     </div>
     <div id="search-section">
     <input type="text" id="search-input" placeholder="Search users or posts">
