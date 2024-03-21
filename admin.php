@@ -5,45 +5,38 @@
 session_start(); // Start the session at the beginning
 
 $pageTitle = "Ara Admin";
-require "head.php";
+require 'head.php';
 
-// Placeholder for database connection file - adjust the path as necessary
-//require 'db_connection.php'; // Include your database connection file here
+// Include your database connection file here
+require 'db.php'; // Adjust the path as necessary
 
-// Placeholder for session user_id. This will be set when you implement the login system.
 $currentUserId = $_SESSION['user_id'] ?? null; // Use null coalescing operator as a placeholder
 
-if ($currentUserId === !null) {
+if ($currentUserId === null) {
     // Redirect to login page if there is no user_id in the session (i.e., not logged in)
     header("Location: loginPage.php");
     exit;
 }
 
 // Check if the current user is an admin
-/*$query = "SELECT is_admin FROM users WHERE user_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $currentUserId); // "i" for integer
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->num_rows === 0) {
+$query = "SELECT is_admin FROM users WHERE user_id = :userId";
+$stmt = $pdo->prepare($query);
+$stmt->execute([':userId' => $currentUserId]);
+$result = $stmt->fetch();
+
+if ($result === false) {
     // Handle user not found or not logged in
     header("Location: loginPage.php");
     exit;
 }
 
-$row = $result->fetch_assoc();
-if (!$row['is_admin']) {
+if (!$result['is_admin']) {
     // Redirect non-admin users
     header("Location: index.php");
     exit;
 }
-*/
-// Proceed with page content for admins
-?>
 
-<?php
-$pageTitle = "Ara Admin";
-require "head.php";
+// Proceed with page content for admins
 ?>
 
 <body>
