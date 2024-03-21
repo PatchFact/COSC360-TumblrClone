@@ -90,4 +90,22 @@ $(document).ready(function () {
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
+
 });
+document.addEventListener('DOMContentLoaded', function() {
+document.getElementById('search-button').addEventListener('click', function() {
+    var searchTerm = document.getElementById('search-input').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'search_handler.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Update the search results container with the response
+            document.getElementById('search-results').innerHTML = this.responseText;
+        }
+    };
+    xhr.send('search=' + encodeURIComponent(searchTerm));
+});
+
+});
+
