@@ -3,7 +3,7 @@ require 'user.php';
 
 $loggedIn = FALSE;
 $isAdmin = FALSE;
-$button = '<a href="loginPage.php" class="button">Log In</a>';
+$button = '<a href="loginPage.php" class="button btn btn-primary mt-3">Log In</a>';
 
 if (isset($_SESSION['user_id'])) {
     $userId = User::getById($_SESSION['user_id']);
@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
     $followerNumber = User::getFollowerCount($userId->user_id);
     $followingNumber = User::getFollowingCount($userId->user_id);
 
-    $button = '<a href="logout.php" class="button">Log Out</a>';
+    $button = '<a href="logout.php" class="button btn btn-primary mt-3">Log Out</a>';
 }
 
 ?>

@@ -25,6 +25,14 @@ h3 {
     font-family: var(--font-family-accent);
 }
 
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+    border-color: transparent;
+    background-color: #f8bd50 !important;
+}
+
 .title {
     font-size: 3rem !important;
     letter-spacing: -0.2rem;
@@ -59,9 +67,9 @@ nav li img {
     width: 100px;
 }
 
-#main {
+.main {
     display: flex;
-    flex-wrap: wrap; /* Allow for wrapping of child elements if needed */
+    flex-wrap: wrap;
 }
 
 .side-profile {
@@ -82,23 +90,17 @@ nav li img {
     width: 100%;
 }
 
-#feed {
+.feed {
     flex: 3;
     background-color: white;
     overflow: auto;
-    padding: 1em; /* Add padding to the feed */
+    padding: 1em;
+    margin-right: 2em;
 }
 
 .button {
     display: block;
-    background-color: goldenrod;
-    color: white;
-    padding: 0.5em;
-    text-decoration: none;
-    margin: 1em;
     text-align: center;
-    border-radius: 0.25em;
-    cursor: pointer; /* Add cursor pointer on hover for better interaction */
 }
 
 #search-bar {
@@ -115,9 +117,20 @@ nav li img {
     box-sizing: border-box; /* Include padding in input width */
 }
 
-#profile-info {
+/* Profile */
+
+#profile-container {
     display: flex;
     flex-direction: column;
+    padding: 1.2em;
+}
+
+.my-posts center {
+    border-bottom: 0.2em solid #f8bd50;
+}
+
+.main-pfp {
+    height: 22em;
 }
 
 /* Login */

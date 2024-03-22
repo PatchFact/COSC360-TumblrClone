@@ -81,6 +81,7 @@ This is the overall checklist needed for the project
                 -   [ ] Security (sanitizing input)
 -   [ ] Profile sidebar component
 -   [ ] Forgot password?
+-   [ ] Routing errors/authorization
 
 ### Katie
 

@@ -14,7 +14,7 @@ $currentUserId = $_SESSION['user_id'] ?? null; // Use null coalescing operator a
 
 if ($currentUserId === null) {
     // Redirect to login page if there is no user_id in the session (i.e., not logged in)
-    header("Location: loginPage.php");
+    header("Location: 404.php");
     exit;
 }
 
@@ -53,4 +53,5 @@ if (!$result['is_admin']) {
         </div>
     </div>
 </body>
+
 </html>

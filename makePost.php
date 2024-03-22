@@ -4,6 +4,12 @@
 <?php
 $pageTitle = "Ara Create Post";
 require "head.php";
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: 404.php");
+    exit();
+}
+
 ?>
 
 
@@ -12,12 +18,12 @@ require "head.php";
     <?php require "navbar.php" ?>
 
 
-    <div id="main">
+    <div class="main">
         <?php
         include "sidebarComponent.php";
         ?>
 
-        <article id="feed">
+        <article class="feed">
             <div id="post-input">
                 <h2>Make Post</h2>
 

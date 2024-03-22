@@ -10,12 +10,12 @@ require "head.php";
 <body>
     <form action="search.php" method="post" style="width: fit-content"></form>
     <?php require "navbar.php" ?>
-    <div id="main">
+    <div class="main">
         <?php
         include "sidebarComponent.php";
         ?>
 
-        <article id="feed">
+        <article class="feed">
             <h1>This is Temporary</h1>
         </article>
 
