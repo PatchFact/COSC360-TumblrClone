@@ -1,7 +1,7 @@
 <?php
 require "dbDetails.php";
 
-$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME ";harset=utf8mb4";
 $dbuser = DBUSER;
 $dbpass = DBPASS;
 
