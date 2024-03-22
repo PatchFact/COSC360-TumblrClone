@@ -1,8 +1,11 @@
 <?php
-$host = 'cosc360.ok.ubc.ca'; 
-$dbname = 'db_18288647';
-$dbusername = '18288647';
-$dbpassword = '18288647';
+
+require 'dbDetails.php';
+
+$host = DBHOST; 
+$dbname = DBNAME;
+$dbusername = DBUSER;
+$dbpassword = DBPASS;
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $dbusername, $dbpassword);
