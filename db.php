@@ -1,14 +1,12 @@
 <?php
-$dbhost = 'cosc360.ok.ubc.ca'; // Removed the trailing slash
-$dbname = 'db_18288647';
-$dbusername = '18288647';
-$dbpassword = '18288647';
+require "dbDetails.php";
+
+$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+$dbuser = DBUSER;
+$dbpass = DBPASS;
 
 try {
-    $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8mb4", $dbusername, $dbpassword);
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    $pdo = new PDO($connectionString, $dbuser, $dbpass);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-?>
