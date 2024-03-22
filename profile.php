@@ -57,9 +57,9 @@ $about_me = $_SESSION['about_me'];
                     <div class="row">
                         <div class="col profile-info">
                             <div class="pfp-container">
-                                <img src="images/default_pfp.jpg" alt="profilePic" class="main-pfp">
+                                <img src="serveProfilePic.php?userId=1" alt="profilePic" class="main-pfp">
 
-                                <form action="profilePic.php" method="post" id="profilePicForm" enctype="multipart/form-data">
+                                <form action="uploadProfilePic.php" method="post" id="profilePicForm" enctype="multipart/form-data">
                                     <input class=" btn btn-primary mt-3" type="file" name="profilePic" id="profilePic" accept=".jpg,.png, .jpeg">
                                     <input class="btn btn-primary mt-3" type="submit" value="Upload Image" name="profilePic">
                                 </form>

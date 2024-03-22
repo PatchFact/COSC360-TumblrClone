@@ -90,11 +90,11 @@ class User
         ]);
     }
 
-    public static function setProfilePicture($user_id, $profile_picture_path)
+    public static function setProfilePicture($user_id, $profile_picture)
     {
         self::initPDO();
 
-        $profile_picture_data = file_get_contents($profile_picture_path);
+        $profile_picture_data = file_get_contents($profile_picture);
         if ($profile_picture_data === false) {
             throw new Exception("Could not read profile picture data");
         }
@@ -104,6 +104,23 @@ class User
             'profile_picture' => $profile_picture_data,
             'user_id' => $user_id
         ]);
+
+        if ($stmt->rowCount()) {
+            return 1;
+        } else {
+            return null;
+        }
+    }
+
+    public static function getProfilePicture($user_id)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("SELECT profile_picture FROM users WHERE user_id = :user_id");
+        $stmt->execute(['user_id' => $user_id]);
+        $profile_picture = $stmt->fetchColumn();
+
+        return $profile_picture;
     }
 
     public static function getFollowers($user_id)

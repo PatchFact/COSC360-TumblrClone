@@ -79,9 +79,9 @@ This is the overall checklist needed for the project
                 -   [ ] Stored in Database
             -   [ ] Form validation
                 -   [ ] Security (sanitizing input)
--   [ ] Profile sidebar component
+-   [x] Profile sidebar component
 -   [ ] Forgot password?
--   [ ] Routing errors/authorization
+-   [x] Routing errors/authorization
 
 ### Katie
 
