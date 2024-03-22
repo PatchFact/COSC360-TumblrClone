@@ -13,9 +13,10 @@ require "head.php";
 
 
     <div id="main">
-        <article id="side-profile">
-            <a href="#" class="button">Log In</a>
-        </article>
+
+        <?php
+        include "sidebarComponent.php";
+        ?>
 
         <article id="feed">
             <div id="profile-info">

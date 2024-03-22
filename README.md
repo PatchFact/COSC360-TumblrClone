@@ -56,6 +56,7 @@ This is the overall checklist needed for the project
 -   [x] Login/Register
     -   [x] Login
         -   [x] Set default pfp
+    -   [x] Logout
     -   [x] Register with
         -   [x] Email
         -   [x] Username
@@ -78,7 +79,8 @@ This is the overall checklist needed for the project
                 -   [ ] Stored in Database
             -   [ ] Form validation
                 -   [ ] Security (sanitizing input)
--   [ ] Forgot password
+-   [ ] Profile sidebar component
+-   [ ] Forgot password?
 
 ### Katie
 
