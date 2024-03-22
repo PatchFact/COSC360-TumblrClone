@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $postId > 0) {
     ]);
 
     if ($result) {
+
         header("Location: admin.php");
         // Redirect or provide a link back to the admin page
     } else {

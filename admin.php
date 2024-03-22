@@ -2,12 +2,12 @@
 <html lang="en">
 
 <?php
-session_start(); // Start the session at the beginning
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $pageTitle = "Ara Admin";
-require 'head.php'; // Make sure this includes Bootstrap CSS
-
-// Include your database connection file here
+require 'head.php';
 require 'db.php'; // Adjust the path as necessary
 
 $currentUserId = $_SESSION['user_id'] ?? null; // Use null coalescing operator as a placeholder
@@ -40,49 +40,17 @@ if (!$result['is_admin']) {
 ?>
 
 <body>
-    <?php require "navbar.php" ?>
+    <?php require "navbar.php"; ?>
 
-    <div id="main">
-        
-    </div>
-    <div id="search-section">
-        <input type="text" id="search-input" placeholder="Search users or posts">
-        <button id="search-button">Search</button>
-        <div id="search-results"></div>
-    </div>
-
-    <!-- Bootstrap Edit Post Modal -->
-    <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <!-- The edit form will be loaded here by the JavaScript -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save Changes</button>
-          </div>
+    <div class="container mt-5">
+        <div id="search-section" class="mb-3">
+            <h2 class="mb-3">Admin Dashboard</h2>
+            <div class="input-group mb-3">
+                <input type="text" id="search-input" class="form-control" placeholder="Search users or posts" aria-label="Search users or posts" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+            </div>
+            <div id="search-results"></div>
         </div>
-      </div>
     </div>
-
-    <script>
-        function showEditModal() {
-    document.getElementById('editPostModal').style.display = 'block';
-}
-
-function closeEditModal() {
-    document.getElementById('editPostModal').style.display = 'none';
-}
-    </script>
-
 </body>
-
 </html>
-

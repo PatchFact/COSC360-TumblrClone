@@ -107,43 +107,34 @@ document.getElementById('search-button').addEventListener('click', function() {
     xhr.send('search=' + encodeURIComponent(searchTerm));
 });
 
-$(document).ready(function () {
-    // Existing code ...
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.ban-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
 
-    function editPost(postId) {
-        fetch('editPostForm.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'postId=' + postId
-        })
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('editPostModal').innerHTML = html;
-            // Assuming you have a modal or a specific div to display the edit form
-            // Open the modal or make the div visible. Adjust as needed for your UI framework or setup.
-            $('#editPostModal').modal('show'); // Bootstrap example
-        })
-        .catch(error => {
-            console.error('Error:', error);
+            const formData = new FormData(form);
+            fetch('toggleBanUser.php', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest', // To identify the request as AJAX on the server side
+                }
+            })
+            .then(response => response.json()) // Assuming your PHP script returns JSON
+            .then(data => {
+                alert(data.message); // Alert the result message
+                if(data.status === 'success') {
+                    // Update the form button to reflect the new status
+                    const submitBtn = form.querySelector('input[type="submit"]');
+                    const newStatus = formData.get('is_banned') == '1' ? '0' : '1'; // Toggle the status for the next action
+                    formData.set('is_banned', newStatus); // Update the formData object for subsequent requests
+                    submitBtn.value = submitBtn.value === 'Ban' ? 'Unban' : 'Ban'; // Toggle the button text
+                    submitBtn.parentNode.querySelector('input[name="is_banned"]').value = newStatus; // Update the hidden input value
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
-    }
-
-    // Make editPost globally available by attaching it to the window object
-    window.editPost = editPost;
-
-    // Rest of your existing code...
-
+    });
 });
-
-function showEditModal() {
-    document.getElementById('editPostModal').style.display = 'block';
-}
-
-function closeEditModal() {
-    document.getElementById('editPostModal').style.display = 'none';
-}
-
 
 });
