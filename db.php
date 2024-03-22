@@ -1,5 +1,5 @@
 <?php
-$host = 'cosc360.ok.ubc.ca/'; // Often this is 'localhost' or a specific server address or IP
+$host = 'cosc360.ok.ubc.ca'; // Often this is 'localhost' or a specific server address or IP
 $dbname = 'db_18288647';
 $username = '18288647';
 $password = '18288647';
