@@ -32,7 +32,7 @@ if (!empty($results)) {
             // Display user info
             echo '<p>User: ' . htmlspecialchars($row['username']) . ' - Email: ' . htmlspecialchars($row['email']) . '</p>';
             $currentUsername = $row['username'];
-             // Button text based on ban status
+            // Button text based on ban status
             $banButtonText = $row['is_banned'] ? 'Unban' : 'Ban';
             // Add a Ban/Unban form
             echo "<form action='toggleBanUser.php' method='post' class='ban-form' style='display:inline;'>
@@ -40,8 +40,6 @@ if (!empty($results)) {
                     <input type='hidden' name='is_banned' value='" . htmlspecialchars($row['is_banned']) . "'>
                     <input type='submit' value='$banButtonText' onclick='return confirm(\"Are you sure?\");'>
                   </form>";
-
-            
         }
         // Display the user's post if available
         if (!empty($row['title'])) {
@@ -55,9 +53,7 @@ if (!empty($results)) {
                     <input type='submit' value='Edit'>
                   </form>";
         }
-        
     }
 } else {
     echo '<p>No results found.</p>';
 }
-?>
