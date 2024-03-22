@@ -1,7 +1,10 @@
 <?php
-require "dbDetails.php";
+define("DBHOST", "cosc360.ok.ubc.ca");
+define("DBNAME", "db_18288647");
+define("DBUSER", "18288647");
+define("DBPASS", "18288647");
 
-$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME ";charset=utf8mb4";
 $dbuser = DBUSER;
 $dbpass = DBPASS;
 
