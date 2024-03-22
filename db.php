@@ -1,12 +1,14 @@
 <?php
 require "dbDetails.php";
 
-$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME ";charset=utf8mb4";
+$dbhost = DBHOST;
+$dbname = DBNAME;
 $dbuser = DBUSER;
 $dbpass = DBPASS;
 
 try {
-    $pdo = new PDO($connectionString, $dbuser, $dbpass);
+    $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8mb4", $dbuser, $dbpass);
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
+
