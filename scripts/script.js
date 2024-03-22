@@ -107,5 +107,34 @@ document.getElementById('search-button').addEventListener('click', function() {
     xhr.send('search=' + encodeURIComponent(searchTerm));
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.ban-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(form);
+            fetch('toggleBanUser.php', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest', // To identify the request as AJAX on the server side
+                }
+            })
+            .then(response => response.json()) // Assuming your PHP script returns JSON
+            .then(data => {
+                alert(data.message); // Alert the result message
+                if(data.status === 'success') {
+                    // Update the form button to reflect the new status
+                    const submitBtn = form.querySelector('input[type="submit"]');
+                    const newStatus = formData.get('is_banned') == '1' ? '0' : '1'; // Toggle the status for the next action
+                    formData.set('is_banned', newStatus); // Update the formData object for subsequent requests
+                    submitBtn.value = submitBtn.value === 'Ban' ? 'Unban' : 'Ban'; // Toggle the button text
+                    submitBtn.parentNode.querySelector('input[name="is_banned"]').value = newStatus; // Update the hidden input value
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
 });
 
+});

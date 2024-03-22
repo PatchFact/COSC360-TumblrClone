@@ -2,12 +2,12 @@
 <html lang="en">
 
 <?php
-session_start(); // Start the session at the beginning
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $pageTitle = "Ara Admin";
 require 'head.php';
-
-// Include your database connection file here
 require 'db.php'; // Adjust the path as necessary
 
 $currentUserId = $_SESSION['user_id'] ?? null; // Use null coalescing operator as a placeholder
@@ -40,21 +40,17 @@ if (!$result['is_admin']) {
 ?>
 
 <body>
-    <?php require "navbar.php" ?>
+    <?php require "navbar.php"; ?>
 
-    <div id="main">
-        <article id="search-bar">
-            <form action="search.php" method="post" style="width: fit-content">
-                <input type="text" name="search" placeholder="Search posts">
-                <input type="text" name="filter" placeholder="Filter tags">
-            </form>
-        </article>
+    <div class="container mt-5">
+        <div id="search-section" class="mb-3">
+            <h2 class="mb-3">Admin Dashboard</h2>
+            <div class="input-group mb-3">
+                <input type="text" id="search-input" class="form-control" placeholder="Search users or posts" aria-label="Search users or posts" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+            </div>
+            <div id="search-results"></div>
+        </div>
     </div>
-    <div id="search-section">
-    <input type="text" id="search-input" placeholder="Search users or posts">
-    <button id="search-button">Search</button>
-    <div id="search-results"></div>
-</div>
 </body>
-
 </html>

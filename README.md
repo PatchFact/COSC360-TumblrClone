@@ -97,10 +97,10 @@ This is the overall checklist needed for the project
 
 ### Jaidyn
 
--   [ ] Admin Page
+-   [x] Admin Page
     -   [x] Search for user by name, email, post
-    -   [ ] Enable/disable user
-    -   [ ] Edit/remove Posts
+    -   [x] Enable/disable user
+    -   [x] Edit/remove Posts
 -   [ ] Server-side
     -   [ ] Deployment to cosc360.ok.ubc.ca (?)
     -   [ ] Error handling (404)
