@@ -1,13 +1,12 @@
 <?php
-require 'dbDetails.php';
+require "dbDetails.php";
+
+$connectionString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+$dbuser = DBUSER;
+$dbpass = DBPASS;
 
 try {
-    $pdo = new PDO("mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=utf8mb4", DBUSER, DBPASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    $pdo = new PDO($connectionString, $dbuser, $dbpass);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-?>
-
-
