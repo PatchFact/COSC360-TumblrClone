@@ -69,16 +69,22 @@ This is the overall checklist needed for the project
     -   [x] Security
     -   [x] Banned users can't log in
 -   [ ] Profile Page
-    -   [ ] Display pfp
-    -   [ ] If same profile as logged in user
-        -   [ ] Edit Profile
+    -   [x] Display pfp
+    -   [x] If same profile as logged in user
+        -   [x] Edit Profile
             -   [ ] Email
             -   [ ] Password
             -   [ ] Username
-            -   [ ] Profile Picture
-                -   [ ] Stored in Database
-            -   [ ] Form validation
-                -   [ ] Security (sanitizing input)
+            -   [x] Profile Picture
+                -   [x] Stored in Database
+            -   [x] Form validation
+                -   [x] Security (sanitizing input)
+    -   [ ] My Posts
+        -   [ ] Display posts
+        -   [ ] Edit posts
+        -   [ ] New post button
+    -   [ ] Followers
+    -   [ ] Following
 -   [x] Profile sidebar component
 -   [ ] Forgot password?
 -   [x] Routing errors/authorization

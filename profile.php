@@ -103,7 +103,7 @@ if ($is_banned) {
 
                         <div class="col align-self-stretch my-posts">
                             <center>
-                                <h3>My Posts</h3>
+                                <h3>Posts</h3>
                                 <hr>
                             </center>
                         </div>
