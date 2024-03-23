@@ -8,6 +8,14 @@ require "head.php";
 
 <?php include "navbar.php" ?>
 
+<?php
+if (isset($_SESSION['error_message'])) {
+    $message = $_SESSION['error_message'];
+    unset($_SESSION['error_message']);
+    serverMessage("danger", $message);
+}
+?>
+
 <body>
     <div class="main">
         <div class="feed ml-3">

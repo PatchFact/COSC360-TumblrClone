@@ -1,5 +1,5 @@
 <?php
-require 'user.php';
+require_once 'user.php';
 
 $loggedIn = FALSE;
 $isAdmin = FALSE;
@@ -19,9 +19,9 @@ if (isset($_SESSION['user_id'])) {
 
 <article class="side-profile">
     <?php if ($loggedIn) : ?>
-        <div class="pfp-container mb-3">
-            <img src="images/default_pfp.jpg" alt="profilePic" class="side-pfp">
-        </div>
+        <center class="pfp-container mb-3">
+            <img src="serveProfilePic.php?userId=1" alt="profilePic" class="side-pfp">
+        </center>
         <section>Followers (<?php echo $followerNumber ?>)</section>
         <section>Following (<?php echo $followingNumber ?>)</section>
         <section><a href="profile.php">My Posts</a></section>

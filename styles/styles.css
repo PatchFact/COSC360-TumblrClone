@@ -73,21 +73,11 @@ nav li img {
 }
 
 .side-profile {
-    flex: 0.5;
     height: 37.5em;
-    width: 15em;
+    width: 12em;
     background-color: white;
     margin: 0em 2em 2em 2em;
     padding: 1em;
-}
-
-.pfp-container {
-    object-fit: contain;
-}
-
-.side-pfp {
-    height: 100%;
-    width: 100%;
 }
 
 .feed {
@@ -125,12 +115,40 @@ nav li img {
     padding: 1.2em;
 }
 
-.my-posts center {
-    border-bottom: 0.2em solid #f8bd50;
+.my-posts hr {
+    border: 0.1em solid #f8bd50;
+    width: 50%;
+}
+
+.side-profile .pfp-container {
+    height: 10em;
+    width: 100%;
+}
+
+.profile-info .pfp-container {
+    border: #f8bd50 solid 0.2em;
+    border-radius: 5%;
+    padding: 1em;
+    height: 25em;
+    width: 25em;
+}
+
+.profile-info h2 {
+    border-bottom: 0.1em solid #f8bd50;
+    padding-bottom: 0.2em;
+    width: 50%;
 }
 
 .main-pfp {
-    height: 22em;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.side-pfp {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 /* Login */
