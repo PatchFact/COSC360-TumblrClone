@@ -2,8 +2,6 @@
 require 'db.php';
 require 'head.php';
 
-// Security checks here (ensure the user is logged in and has permission to edit the post)
-
 $postId = isset($_GET['postId']) ? (int)$_GET['postId'] : 0;
 
 if ($postId > 0) {
@@ -12,21 +10,30 @@ if ($postId > 0) {
     $post = $stmt->fetch();
 
     if ($post) {
-        echo "<form action='editPost.php?postId=" . htmlspecialchars($postId) . "' method='post'>
-                <input type='text' name='title' value='" . htmlspecialchars($post['title']) . "'>
-                <textarea name='body'>" . htmlspecialchars($post['body']) . "</textarea>
-                <input type='submit' value='Update Post'>
-              </form>";
+        echo "<div class='container mt-5'>
+        <h2>Edit Post</h2>
+        <form action='editPost.php?postId=" . htmlspecialchars($postId) . "' method='post'>
+            <div class='mb-3'>
+                <label for='title' class='form-label'>Title</label>
+                <input type='text' class='form-control' name='title' id='title' value='" . htmlspecialchars($post['title']) . "' required>
+            </div>
+            <div class='mb-3'>
+                <label for='body' class='form-label'>Body</label>
+                <textarea class='form-control' name='body' id='body' rows='3' required>" . htmlspecialchars($post['body']) . "</textarea>
+            </div>
+            <button type='submit' class='btn btn-primary'>Update Post</button>
+            <a href='admin.php' class='btn btn-secondary'>Cancel</a>
+        </form>
+      </div>";
+
     } else {
-        echo "Post not found.";
+        echo "<div class='container mt-5'><p>Post not found.</p></div>";
     }
 } else {
-    echo "Invalid post ID.";
+    echo "<div class='container mt-5'><p>Invalid post ID.</p></div>";
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $postId > 0) {
-    // Again, include security checks as appropriate
-
     $title = $_POST['title'] ?? '';
     $body = $_POST['body'] ?? '';
 
@@ -38,12 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $postId > 0) {
     ]);
 
     if ($result) {
-
-        header("Location: admin.php");
-        // Redirect or provide a link back to the admin page
+        echo "<script>window.location.href = 'admin.php';</script>";
     } else {
-        echo "An error occurred while updating the post.";
+        echo "<div class='container mt-5'><p>An error occurred while updating the post.</p></div>";
     }
 }
-
 ?>
+
