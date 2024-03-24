@@ -88,7 +88,7 @@ This is the overall checklist needed for the project
         -   [ ] Asynchronous viewing (AJAX)
     -   [ ] Register users can
         -   [ ] Make posts
-            -   [ ] Form validation
+            -   [x] Form validation
             -   [ ] Security (sanitizing input)
         -   [ ] Make comments
     -   [ ] Search for items/posts by keyword (registered or unregistered)
@@ -102,8 +102,8 @@ This is the overall checklist needed for the project
     -   [x] Enable/disable user
     -   [x] Edit/remove Posts
 -   [ ] Server-side
-    -   [ ] Deployment to cosc360.ok.ubc.ca (?)
-    -   [ ] Error handling (404)
+    -   [x] Deployment to cosc360.ok.ubc.ca (?)
+    -   [x] Error handling (404)
     -   [ ] Breadcrumbs
 
 ### All
