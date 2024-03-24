@@ -16,9 +16,9 @@ if ($currentUserId === null) {
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Assuming validation and assignment of $title and $text are done here
     $title = isset($_POST['title-post']) ? $_POST['title-post'] : '';
     $text = isset($_POST['text-post']) ? $_POST['text-post'] : '';
+    $imgData = null;
 
     if (empty($title)) {
         $errors['title-post'] = "Please input a title";
@@ -28,16 +28,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['text-post'] = "Please input a text";
     }
 
+    if (isset($_FILES['image-post']) && $_FILES['image-post']['error'] === 0) {
+        $imgData = file_get_contents($_FILES['image-post']['tmp_name']);
+        // Add any necessary validation for the file here
+    } else {
+        $errors['image-post'] = "Error uploading the image";
+    }
+
     if (empty($errors)) {
-        // Insert into database
+        // Insert post text into database
         $stmt = $pdo->prepare("INSERT INTO posts (title, body, user_id) VALUES (:title, :body, :user_id)");
-        if ($stmt->execute([':title' => $title, ':body' => $text, ':user_id' => $currentUserId])) {
-            $_SESSION['success_message'] = "Post created successfully!";
-            header("Location: makePost.php"); // Redirects back here to show the success message
-            exit;
-        } else {
-            $errors['db'] = "An error occurred while saving the post.";
+        $success = $stmt->execute([':title' => $title, ':body' => $text, ':user_id' => $currentUserId]);
+
+        if ($success && $imgData) {
+            $lastPostId = $pdo->lastInsertId();
+            // Insert image data into the `post_img` table
+            $stmtImg = $pdo->prepare("INSERT INTO post_img (post_id, img_src) VALUES (:post_id, :img_src)");
+            $stmtImg->execute([':post_id' => $lastPostId, ':img_src' => $imgData]);
         }
+
+        $_SESSION['success_message'] = "Post created successfully!";
+        header("Location: makePost.php");
+        exit;
     }
 }
 ?>
@@ -62,6 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="title-post" class="form-label">Title:</label>
                         <input type="text" class="form-control" id="title-post" name="title-post" placeholder="Enter post title">
                         <span class="text-danger"><?php echo $errors['title-post'] ?? ''; ?></span>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="mb-3">
+                        <label for="image-post" class="form-label">Image:</label>
+                        <input type="file" class="form-control" id="image-post" name="image-post" accept="image/*">
+                        <span class="text-danger"><?php echo $errors['image-post'] ?? ''; ?></span>
                     </div>
 
                     <!-- Text -->
