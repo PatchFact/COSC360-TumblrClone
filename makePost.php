@@ -4,6 +4,40 @@
 <?php
 $pageTitle = "Ara Create Post";
 require "head.php";
+
+$errors = []; // Array to store validation errors
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate name
+    if (empty($_POST["image-post"])) {
+        $errors['image-post'] = "Please upload a file";
+    }
+
+    // Validate email
+    if (empty($_POST["text-post"])) {
+        $errors['text-post'] = "Please input a caption";
+    }
+
+    // Validate other fields as needed...
+
+    // If no errors, proceed with further processing
+    if (empty($errors)) {
+        // Process form data, e.g., save to database, send email, etc.
+        // Redirect to success page or do further processing
+        header("Location: success.php");
+        exit();
+    }
+}
+
+// Function to sanitize and validate input data
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 ?>
 
 
@@ -22,12 +56,12 @@ require "head.php";
                 <h2>Make Post</h2>
 
                 <!-- Image Post -->
-                <label for="image-post">Image:</label>
-                <input type="file" id="image-post" name="image-post" accept="image/*" />
+                <label for="image-post">Image:</label><br>
+                <input type="file" id="image-post" name="image-post" accept="image/*" /><br>
 
                 <!-- Text Post -->
-                <label for="text-post">Text:</label>
-                <input type="text" id="text-post" name="text-post" placeholder="Enter post text here" />
+                <label for="text-post">Text:</label><br>
+                <input type="text" id="text-post" name="text-post" placeholder="Enter post text here" style="width: 500px; height: 25px;"/><br>
 
                 <!-- Button to Save Changes -->
                 <button type="button" onclick="savePost()">Post</button>
