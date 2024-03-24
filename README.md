@@ -86,10 +86,10 @@ This is the overall checklist needed for the project
     -   [ ] Home Page
     -   [ ] Browse posts (registered or unregistered)
         -   [ ] Asynchronous viewing (AJAX)
-    -   [ ] Register users can
-        -   [ ] Make posts
+    -   [x] Register users can
+        -   [x] Make posts
             -   [x] Form validation
-            -   [ ] Security (sanitizing input)
+            -   [x] Security (sanitizing input)
         -   [ ] Make comments
     -   [ ] Search for items/posts by keyword (registered or unregistered)
     -   [ ] Database storage
