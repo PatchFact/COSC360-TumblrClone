@@ -57,11 +57,15 @@ function test_input($data) {
 
                 <!-- Image Post -->
                 <label for="image-post">Image:</label><br>
-                <input type="file" id="image-post" name="image-post" accept="image/*" /><br>
+                <input type="file" id="image-post" name="image-post" accept="image/*" value="<?php echo isset($_POST['image-post']) ? $_POST['image-post'] : ''; ?>"/>
+                <span style="color: red;"><?php echo isset($errors['image-post']) ? $errors['image-post'] : ''; ?></span>
+                <br>
 
                 <!-- Text Post -->
                 <label for="text-post">Text:</label><br>
-                <input type="text" id="text-post" name="text-post" placeholder="Enter post text here" style="width: 500px; height: 25px;"/><br>
+                <input type="text" id="text-post" name="text-post" placeholder="Enter post text here" value="<?php echo isset($_POST['text-post']) ? $_POST['text-post'] : ''; ?>"style="width: 500px; height: 25px;"/>
+                <span style="color: red;"><?php echo isset($errors['text-post']) ? $errors['text-post'] : ''; ?></span>
+                <br>
 
                 <!-- Button to Save Changes -->
                 <button type="button" onclick="savePost()">Post</button>
