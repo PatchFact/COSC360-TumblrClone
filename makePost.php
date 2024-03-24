@@ -1,78 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
+session_start();
+require "head.php"; // Ensure this includes Bootstrap CSS for styling
+require "db.php";
+
 $pageTitle = "Ara Create Post";
-require "head.php";
+$currentUserId = $_SESSION['user_id'] ?? null;
 
-$errors = []; // Array to store validation errors
+if ($currentUserId === null) {
+    header("Location: loginPage.php");
+    exit;
+}
 
-// Check if form is submitted
+$errors = [];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate name
-    if (empty($_POST["image-post"])) {
-        $errors['image-post'] = "Please upload a file";
+    // Assuming validation and assignment of $title and $text are done here
+    $title = isset($_POST['title-post']) ? $_POST['title-post'] : '';
+    $text = isset($_POST['text-post']) ? $_POST['text-post'] : '';
+
+    if (empty($title)) {
+        $errors['title-post'] = "Please input a title";
     }
 
-    // Validate email
-    if (empty($_POST["text-post"])) {
-        $errors['text-post'] = "Please input a caption";
+    if (empty($text)) {
+        $errors['text-post'] = "Please input a text";
     }
 
-    // Validate other fields as needed...
-
-    // If no errors, proceed with further processing
     if (empty($errors)) {
-        // Process form data, e.g., save to database, send email, etc.
-        // Redirect to success page or do further processing
-        header("Location: success.php");
-        exit();
+        // Insert into database
+        $stmt = $pdo->prepare("INSERT INTO posts (title, body, user_id) VALUES (:title, :body, :user_id)");
+        if ($stmt->execute([':title' => $title, ':body' => $text, ':user_id' => $currentUserId])) {
+            $_SESSION['success_message'] = "Post created successfully!";
+            header("Location: makePost.php"); // Redirects back here to show the success message
+            exit;
+        } else {
+            $errors['db'] = "An error occurred while saving the post.";
+        }
     }
 }
-
-// Function to sanitize and validate input data
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 ?>
 
-
 <body>
-    <form action="search.php" method="post" style="width: fit-content"></form>
-    <?php require "navbar.php" ?>
-
-
-    <div id="main">
-        <article id="side-profile">
-            <a href="#" class="button">Log In</a>
-        </article>
-
-        <article id="feed">
-            <div id="post-input">
-                <h2>Make Post</h2>
-
-                <!-- Image Post -->
-                <label for="image-post">Image:</label><br>
-                <input type="file" id="image-post" name="image-post" accept="image/*" value="<?php echo isset($_POST['image-post']) ? $_POST['image-post'] : ''; ?>"/>
-                <span style="color: red;"><?php echo isset($errors['image-post']) ? $errors['image-post'] : ''; ?></span>
-                <br>
-
-                <!-- Text Post -->
-                <label for="text-post">Text:</label><br>
-                <input type="text" id="text-post" name="text-post" placeholder="Enter post text here" value="<?php echo isset($_POST['text-post']) ? $_POST['text-post'] : ''; ?>"style="width: 500px; height: 25px;"/>
-                <span style="color: red;"><?php echo isset($errors['text-post']) ? $errors['text-post'] : ''; ?></span>
-                <br>
-
-                <!-- Button to Save Changes -->
-                <button type="button" onclick="savePost()">Post</button>
+    <?php require "navbar.php"; ?>
+    <div class="container mt-5">
+        <!-- Display Success Message -->
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo $_SESSION['success_message']; ?>
             </div>
-        </article>
-        </form>
+            <?php unset($_SESSION['success_message']); ?>
+        <?php endif; ?>
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2 class="mb-4">Create a New Post</h2>
+                <form id="postForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label for="title-post" class="form-label">Title:</label>
+                        <input type="text" class="form-control" id="title-post" name="title-post" placeholder="Enter post title">
+                        <span class="text-danger"><?php echo $errors['title-post'] ?? ''; ?></span>
+                    </div>
+
+                    <!-- Text -->
+                    <div class="mb-3">
+                        <label for="text-post" class="form-label">Text:</label>
+                        <textarea class="form-control" id="text-post" name="text-post" rows="3" placeholder="Enter text"></textarea>
+                        <span class="text-danger"><?php echo $errors['text-post'] ?? ''; ?></span>
+                    </div>
+
+                    <!-- Post Button -->
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
-
 </html>
