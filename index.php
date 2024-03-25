@@ -4,7 +4,7 @@
 <?php
 $pageTitle = "Ara Home";
 require "head.php";
-require "db.php"; // Ensure this file establishes a PDO connection to your database
+require "db.php";
 
 try {
     $stmt = $pdo->query("SELECT p.post_id, p.title, p.body, u.username FROM posts p JOIN users u ON p.user_id = u.user_id WHERE visible = 1 ORDER BY p.created_at DESC");
@@ -25,22 +25,22 @@ try {
         ?>
 
         <article id="feed">
-    <h2>Feed</h2>
-    <?php foreach ($posts as $post): ?>
-        <div class="post">
-            <h3><?php echo htmlspecialchars($post['title']); ?></h3>
-            <p><?php echo htmlspecialchars($post['body']); ?></p>
-            <small>Posted by: <?php echo htmlspecialchars($post['username']); ?></small>
-            
-            <!-- Comment Form for each post -->
-            <form action="submitComment.php" method="post">
-                <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                <textarea name="comment" placeholder="Write a comment..." required></textarea>
-                <br><button type="submit">Submit Comment</button>
-            </form>
-        </div>
-    <?php endforeach; ?>
-</article>
+            <h2>Feed</h2>
+            <?php foreach ($posts as $post) : ?>
+                <div class="post">
+                    <h3><?php echo htmlspecialchars($post['title']); ?></h3>
+                    <p><?php echo htmlspecialchars($post['body']); ?></p>
+                    <small>Posted by: <?php echo htmlspecialchars($post['username']); ?></small>
+
+                    <!-- Comment Form for each post -->
+                    <form action="submitComment.php" method="post">
+                        <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                        <textarea name="comment" placeholder="Write a comment..." required></textarea>
+                        <br><button type="submit">Submit Comment</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </article>
 
         <article id="search-bar">
             <input text="text" name="search" placeholder="Search posts">
