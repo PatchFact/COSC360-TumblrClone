@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Update the search results container with the response
                     document.getElementById("search-results").innerHTML =
                         this.responseText;
                 }
@@ -123,36 +122,65 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".ban-form").forEach((form) => {
             form.addEventListener("submit", function (e) {
-                e.preventDefault(); // Prevent the default form submission
+                e.preventDefault();
 
                 const formData = new FormData(form);
                 fetch("toggleBanUser.php", {
                     method: "POST",
                     body: formData,
                     headers: {
-                        "X-Requested-With": "XMLHttpRequest", // To identify the request as AJAX on the server side
+                        "X-Requested-With": "XMLHttpRequest",
                     },
                 })
-                    .then((response) => response.json()) // Assuming your PHP script returns JSON
+                    .then((response) => response.json())
                     .then((data) => {
-                        alert(data.message); // Alert the result message
+                        alert(data.message); 
                         if (data.status === "success") {
-                            // Update the form button to reflect the new status
                             const submitBtn = form.querySelector(
                                 'input[type="submit"]'
                             );
                             const newStatus =
-                                formData.get("is_banned") == "1" ? "0" : "1"; // Toggle the status for the next action
-                            formData.set("is_banned", newStatus); // Update the formData object for subsequent requests
+                                formData.get("is_banned") == "1" ? "0" : "1"; 
+                            formData.set("is_banned", newStatus); 
                             submitBtn.value =
-                                submitBtn.value === "Ban" ? "Unban" : "Ban"; // Toggle the button text
+                                submitBtn.value === "Ban" ? "Unban" : "Ban"; 
                             submitBtn.parentNode.querySelector(
                                 'input[name="is_banned"]'
-                            ).value = newStatus; // Update the hidden input value
+                            ).value = newStatus; 
                         }
                     })
                     .catch((error) => console.error("Error:", error));
             });
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('postForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+    
+            const formData = new FormData(form);
+            
+            fetch('makePost.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(html => {
+                // Process the response HTML here
+                // For example, display a success message or handle errors
+                console.log(html);
+                if (html.includes("Location: makePost.php")) {
+                    window.location.href = 'makePost.php';
+                } else {
+                    // Display error message to the user
+                    document.getElementById('responseContainer').innerHTML = 'Failed to create post. Please try again.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+
 });

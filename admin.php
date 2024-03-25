@@ -8,9 +8,9 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $pageTitle = "Ara Admin";
 require 'head.php';
-require 'db.php'; // Adjust the path as necessary
+require 'db.php';
 
-$currentUserId = $_SESSION['user_id'] ?? null; // Use null coalescing operator as a placeholder
+$currentUserId = $_SESSION['user_id'] ?? null;
 
 if ($currentUserId === null) {
     // Redirect to login page if there is no user_id in the session (i.e., not logged in)
@@ -18,25 +18,20 @@ if ($currentUserId === null) {
     exit;
 }
 
-// Check if the current user is an admin
 $query = "SELECT is_admin FROM users WHERE user_id = :userId";
 $stmt = $pdo->prepare($query);
 $stmt->execute([':userId' => $currentUserId]);
 $result = $stmt->fetch();
 
 if ($result === false) {
-    // Handle user not found or not logged in
     header("Location: loginPage.php");
     exit;
 }
 
 if (!$result['is_admin']) {
-    // Redirect non-admin users
     header("Location: index.php");
     exit;
 }
-
-// Proceed with page content for admins
 ?>
 
 <body>
