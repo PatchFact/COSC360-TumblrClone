@@ -9,7 +9,7 @@ $pageTitle = "Ara Create Post";
 $currentUserId = $_SESSION['user_id'] ?? null;
 
 if ($currentUserId === null) {
-    header("Location: loginPage.php");
+    header("Location: 404.php");
     exit;
 }
 
@@ -55,46 +55,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body>
-    <?php require "navbar.php"; ?>
-    <div class="container mt-5">
-        <!-- Display Success Message -->
-        <?php if (isset($_SESSION['success_message'])): ?>
-            <div class="alert alert-success" role="alert">
-                <?php echo $_SESSION['success_message']; ?>
-            </div>
-            <?php unset($_SESSION['success_message']); ?>
-        <?php endif; ?>
+    <<<<<<< HEAD <form action="search.php" method="post" style="width: fit-content">
+        </form>
+        <?php require "navbar.php" ?>
 
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2 class="mb-4">Create a New Post</h2>
-                <form id="postForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-                    <!-- Title -->
-                    <div class="mb-3">
-                        <label for="title-post" class="form-label">Title:</label>
-                        <input type="text" class="form-control" id="title-post" name="title-post" placeholder="Enter post title">
-                        <span class="text-danger"><?php echo $errors['title-post'] ?? ''; ?></span>
+
+        <div class="main">
+            <?php
+            include "sidebarComponent.php";
+            ?>
+
+            <article class="feed">
+                <div id="post-input">
+                    <h2>Make Post</h2>
+
+                    <!-- Image Post -->
+                    <label for="image-post">Image:</label>
+                    <input type="file" id="image-post" name="image-post" accept="image/*" />
+
+                    <!-- Text Post -->
+                    <label for="text-post">Text:</label>
+                    <input type="text" id="text-post" name="text-post" placeholder="Enter post text here" />
+
+                    <!-- Button to Save Changes -->
+                    <button type="button" onclick="savePost()">Post</button>
+                    =======
+                    <?php require "navbar.php"; ?>
+                    <div class="container mt-5">
+                        <!-- Display Success Message -->
+                        <?php if (isset($_SESSION['success_message'])) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?php echo $_SESSION['success_message']; ?>
+                                >>>>>>> cef50b75951aa8ea31ab144593166725af6c6e65
+                            </div>
+                            <?php unset($_SESSION['success_message']); ?>
+                        <?php endif; ?>
+
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <h2 class="mb-4">Create a New Post</h2>
+                                <form id="postForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                    <!-- Title -->
+                                    <div class="mb-3">
+                                        <label for="title-post" class="form-label">Title:</label>
+                                        <input type="text" class="form-control" id="title-post" name="title-post" placeholder="Enter post title">
+                                        <span class="text-danger"><?php echo $errors['title-post'] ?? ''; ?></span>
+                                    </div>
+
+                                    <!-- Image -->
+                                    <div class="mb-3">
+                                        <label for="image-post" class="form-label">Image:</label>
+                                        <input type="file" class="form-control" id="image-post" name="image-post" accept="image/*">
+                                        <span class="text-danger"><?php echo $errors['image-post'] ?? ''; ?></span>
+                                    </div>
+
+                                    <!-- Text -->
+                                    <div class="mb-3">
+                                        <label for="text-post" class="form-label">Text:</label>
+                                        <textarea class="form-control" id="text-post" name="text-post" rows="3" placeholder="Enter text"></textarea>
+                                        <span class="text-danger"><?php echo $errors['text-post'] ?? ''; ?></span>
+                                    </div>
+
+                                    <!-- Post Button -->
+                                    <button type="submit" class="btn btn-primary">Post</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Image -->
-                    <div class="mb-3">
-                        <label for="image-post" class="form-label">Image:</label>
-                        <input type="file" class="form-control" id="image-post" name="image-post" accept="image/*">
-                        <span class="text-danger"><?php echo $errors['image-post'] ?? ''; ?></span>
-                    </div>
-
-                    <!-- Text -->
-                    <div class="mb-3">
-                        <label for="text-post" class="form-label">Text:</label>
-                        <textarea class="form-control" id="text-post" name="text-post" rows="3" placeholder="Enter text"></textarea>
-                        <span class="text-danger"><?php echo $errors['text-post'] ?? ''; ?></span>
-                    </div>
-
-                    <!-- Post Button -->
-                    <button type="submit" class="btn btn-primary">Post</button>
-                </form>
-            </div>
-        </div>
-    </div>
 </body>
+
 </html>

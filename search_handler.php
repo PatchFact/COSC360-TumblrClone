@@ -59,4 +59,3 @@ if (!empty($results)) {
 } else {
     echo '<div class="alert alert-info" role="alert">No results found.</div>';
 }
-?>

@@ -66,6 +66,10 @@ require "head.php";
         </div>
 
         <div class="d-flex flex-column align-items-center mt-5">
+            <h1><span class="title">OR</span></h1>
+        </div>
+
+        <div class="d-flex flex-column align-items-center mt-5">
             <h1><span class="title">Register</span></h1>
         </div>
         <div class="d-flex flex-column m-3 align-items-center">
@@ -102,7 +106,7 @@ require "head.php";
                     <input type="checkbox" class="form-check-input" id="admin-check" name="admin-check" value="TRUE" />
                     <label class="form-check-label" for="admin-check">Admin</label>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">
+                <button type="submit" class="btn btn-primary mt-3 mb-5">
                     Submit
                 </button>
             </form>

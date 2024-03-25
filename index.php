@@ -19,10 +19,10 @@ try {
 <body>
     <form action="search.php" method="post" style="width: fit-content"></form>
     <?php require "navbar.php" ?>
-    <div id="main">
-        <article id="side-profile">
-            <a href="loginPage.php" class="button">Log In</a>
-        </article>
+    <div class="main">
+        <?php
+        include "sidebarComponent.php";
+        ?>
 
         <article id="feed">
     <h2>Feed</h2>
