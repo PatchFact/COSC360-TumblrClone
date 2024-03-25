@@ -13,7 +13,8 @@ require 'db.php';
 $currentUserId = $_SESSION['user_id'] ?? null;
 
 if ($currentUserId === null) {
-    header("Location: loginPage.php");
+    // Redirect to login page if there is no user_id in the session (i.e., not logged in)
+    header("Location: 404.php");
     exit;
 }
 
@@ -47,4 +48,5 @@ if (!$result['is_admin']) {
         </div>
     </div>
 </body>
+
 </html>

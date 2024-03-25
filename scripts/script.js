@@ -86,6 +86,14 @@ $(document).ready(function () {
         this.submit();
     });
 
+    $("#editEmailButton").click(function () {
+        $("#editEmailForm").show();
+    });
+
+    $("#editAboutButton").click(function () {
+        $("#editAboutForm").show();
+    });
+
     function isValidEmail(email) {
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -145,4 +153,34 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('postForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+    
+            const formData = new FormData(form);
+            
+            fetch('makePost.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(html => {
+                // Process the response HTML here
+                // For example, display a success message or handle errors
+                console.log(html);
+                if (html.includes("Location: makePost.php")) {
+                    window.location.href = 'makePost.php';
+                } else {
+                    // Display error message to the user
+                    document.getElementById('responseContainer').innerHTML = 'Failed to create post. Please try again.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+
 });

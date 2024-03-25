@@ -10,17 +10,27 @@ if (!isset($_SESSION['user_id'])) {
 $postId = isset($_POST['post_id']) ? (int)$_POST['post_id'] : 0;
 
 if ($postId > 0) {
-    $stmt = $pdo->prepare("DELETE FROM posts WHERE post_id = :postId");
-    $result = $stmt->execute([':postId' => $postId]);
+    $pdo->beginTransaction();
+    
+    try {
+        $stmtImg = $pdo->prepare("DELETE FROM post_img WHERE post_id = :postId");
+        $stmtImg->execute([':postId' => $postId]);
 
-    if ($result) {
-        echo "Post deleted successfully.";
-    } else {
-        echo "An error occurred while deleting the post.";
+        // Next, delete the post itself
+        $stmtPost = $pdo->prepare("DELETE FROM posts WHERE post_id = :postId");
+        $stmtPost->execute([':postId' => $postId]);
+
+        $pdo->commit();
+        echo "Post and associated images deleted successfully.";
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        echo "An error occurred while deleting the post and associated images: " . $e->getMessage();
     }
+
 } else {
     echo "Invalid post ID.";
 }
 
 header("Location: admin.php");
 ?>
+
