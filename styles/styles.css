@@ -151,6 +151,18 @@ nav li img {
     width: 100%;
 }
 
+#editPassword {
+    background-color: #ffe6b6;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#editAboutForm {
+    background-color: #ffe6b6;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 /* Login */
 
 .loginPageForm {

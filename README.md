@@ -68,13 +68,13 @@ This is the overall checklist needed for the project
     -   [x] Form validation
     -   [x] Security
     -   [x] Banned users can't log in
--   [ ] Profile Page
+-   [x] Profile Page
     -   [x] Display pfp
     -   [x] If same profile as logged in user
         -   [x] Edit Profile
-            -   [ ] Email
-            -   [ ] Password
-            -   [ ] Username
+            -   [x] Email
+            -   [x] Password
+            -   [x] Username
             -   [x] Profile Picture
                 -   [x] Stored in Database
             -   [x] Form validation
@@ -83,8 +83,9 @@ This is the overall checklist needed for the project
         -   [ ] Display posts
         -   [ ] Edit posts
         -   [ ] New post button
-    -   [ ] Followers
-    -   [ ] Following
+-   [x] Follow system
+    -   [x] Followers
+    -   [x] Following
 -   [x] Profile sidebar component
 -   [ ] Forgot password?
 -   [x] Routing errors/authorization

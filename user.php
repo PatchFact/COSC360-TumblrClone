@@ -123,13 +123,36 @@ class User
         return $profile_picture;
     }
 
+    public static function getFollowing($user_id)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("SELECT * FROM follows WHERE following_user_id = :user_id");
+        $stmt->execute(['user_id' => $user_id]);
+        $followingIds = $stmt->fetchAll();
+
+        $following = [];
+        foreach ($followingIds as $followingId) {
+            $followed = self::getById($followingId['followed_user_id']);
+            $following[] = $followed;
+        }
+
+        return $following;
+    }
+
     public static function getFollowers($user_id)
     {
         self::initPDO();
 
-        $stmt = self::$pdo->prepare("SELECT * FROM follow WHERE followed_user_id = :user_id");
+        $stmt = self::$pdo->prepare("SELECT * FROM follows WHERE followed_user_id = :user_id");
         $stmt->execute(['user_id' => $user_id]);
-        $followers = $stmt->fetchAll();
+        $followerIds = $stmt->fetchAll();
+
+        $followers = [];
+        foreach ($followerIds as $followerId) {
+            $follower = self::getById($followerId['following_user_id']);
+            $followers[] = $follower;
+        }
 
         return $followers;
     }
@@ -154,5 +177,102 @@ class User
         $followingCount = $stmt->fetchColumn();
 
         return $followingCount;
+    }
+
+    public static function setEmail($user_id, $new_email)
+    {
+        self::initPDO();
+
+        if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+            return null;
+        }
+
+        $stmt = self::$pdo->prepare("UPDATE users SET email = :new_email WHERE user_id = :user_id");
+        $stmt->execute([
+            'new_email' => $new_email,
+            'user_id' => $user_id
+        ]);
+
+        if ($stmt->rowCount()) {
+            return 1;
+        } else {
+            return null;
+        }
+    }
+
+    public static function setAbout($user_id, $about_me)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("UPDATE users SET about_me = :about_me WHERE user_id = :user_id");
+        $stmt->execute([
+            'about_me' => $about_me,
+            'user_id' => $user_id
+        ]);
+
+        if ($stmt->rowCount()) {
+            return 1;
+        } else {
+            return null;
+        }
+    }
+
+    public static function setPassword($user_id, $new_password)
+    {
+        self::initPDO();
+
+        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+
+        $stmt = self::$pdo->prepare("UPDATE users SET password = :new_password WHERE user_id = :user_id");
+        $stmt->execute([
+            'new_password' => $hashedPassword,
+            'user_id' => $user_id
+        ]);
+
+        if ($stmt->rowCount()) {
+            return 1;
+        } else {
+            return null;
+        }
+    }
+
+    public static function isFollowing($user_id, $followed_user_id)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("SELECT * FROM follows WHERE following_user_id = :user_id AND followed_user_id = :followed_user_id");
+        $stmt->execute([
+            'user_id' => $user_id,
+            'followed_user_id' => $followed_user_id
+        ]);
+        $follow = $stmt->fetch();
+
+        if ($follow) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function followUser($follower_id, $followed_id)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("INSERT INTO follows (following_user_id, followed_user_id) VALUES (:follower_id, :followed_id)");
+        $stmt->execute([
+            'follower_id' => $follower_id,
+            'followed_id' => $followed_id
+        ]);
+    }
+
+    public static function unfollowUser($follower_id, $followed_id)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("DELETE FROM follows WHERE following_user_id = :follower_id AND followed_user_id = :followed_id");
+        $stmt->execute([
+            'follower_id' => $follower_id,
+            'followed_id' => $followed_id
+        ]);
     }
 }

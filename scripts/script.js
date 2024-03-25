@@ -86,6 +86,14 @@ $(document).ready(function () {
         this.submit();
     });
 
+    $("#editEmailButton").click(function () {
+        $("#editEmailForm").show();
+    });
+
+    $("#editAboutButton").click(function () {
+        $("#editAboutForm").show();
+    });
+
     function isValidEmail(email) {
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
