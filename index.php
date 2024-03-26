@@ -3,7 +3,12 @@
 
 <?php
 $pageTitle = "Ara Home";
-require "head.php";
+require_once "head.php";
+require_once "user.php";
+require_once "post.php";
+
+$posts = Post::fetchAll();
+
 ?>
 
 
@@ -15,8 +20,27 @@ require "head.php";
         include "sidebarComponent.php";
         ?>
 
-        <article class="feed">
-            <h1>This is Temporary</h1>
+        <article id="feed">
+            <h2>Feed</h2>
+            <?php foreach ($posts as $post) : ?>
+                <div class="post">
+                    <h3><?php echo htmlspecialchars($post->title); ?></h3>
+                    <p><?php echo htmlspecialchars($post->body); ?></p>
+                    <small>Posted by:
+                        <?php
+
+                        $user = User::getById($post->user_id);
+
+                        echo htmlspecialchars($user->username);
+
+                        ?></small>
+                    <form action="submitComment.php" method="post">
+                        <input type="hidden" name="post_id" value="<?php echo $post->post_id; ?>">
+                        <textarea name="comment" placeholder="Write a comment..." required></textarea>
+                        <br><button type="submit">Submit Comment</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </article>
 
         <article id="search-bar">

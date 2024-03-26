@@ -14,7 +14,7 @@ class User
     private static function initPDO()
     {
         if (self::$pdo === null) {
-            self::$pdo = require_once 'db.php';
+            self::$pdo = require 'db.php';
         }
     }
 
