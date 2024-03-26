@@ -116,9 +116,9 @@ This is the overall checklist needed for the project
     -   [x] Deployment to cosc360.ok.ubc.ca (?)
     -   [x] Error handling (404)
 -   [ ] Posts Feed
-    -   [ ] Home Page
-        -   [ ] Browse posts (registered or unregistered)
-            -   [ ] Asynchronous viewing (AJAX)
+    -   [x] Home Page
+        -   [x] Browse posts (registered or unregistered)
+            -   [x] Asynchronous viewing (AJAX)
     -   [ ] Search for items/posts by keyword (registered or unregistered)
 
 ## Additional Functionality
