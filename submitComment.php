@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "db.php";
+require "Comment.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: loginPage.php");
@@ -12,16 +12,15 @@ $post_id = $_POST['post_id'] ?? null;
 $comment = $_POST['comment'] ?? '';
 
 if ($post_id && $comment) {
-    $stmt = $pdo->prepare("INSERT INTO comments (body, user_id, post_id, visible, created_at) VALUES (:body, :user_id, :post_id, 1, CURRENT_TIMESTAMP)");
-    if (!$stmt->execute([':body' => $comment, ':user_id' => $user_id, ':post_id' => $post_id])) {
-        // Handle error
+    $insertedCommentId = Comment::insertComment($comment, $user_id, $post_id);
+
+    if (!$insertedCommentId) {
         $_SESSION['error_message'] = "Failed to submit comment.";
     }
 } else {
-    // Handle error
     $_SESSION['error_message'] = "Invalid comment data.";
 }
 
-header("Location: index.php"); // Adjust if your home page has a different name
+header("Location: index.php");
 exit;
 ?>
