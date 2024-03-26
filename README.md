@@ -85,10 +85,6 @@ This is the overall checklist needed for the project
         -   [ ] Display posts
         -   [ ] Edit posts
         -   [ ] New post button
-    -   [ ] Home Page
-        -   [ ] Browse posts (registered or unregistered)
-            -   [ ] Asynchronous viewing (AJAX)
-    -   [ ] Search for items/posts by keyword (registered or unregistered)
 
 -   [x] Follow system
     -   [x] Followers
@@ -116,10 +112,14 @@ This is the overall checklist needed for the project
     -   [x] Search for user by name, email, post
     -   [x] Enable/disable user
     -   [x] Edit/remove Posts
--   [ ] Server-side
+-   [x] Server-side
     -   [x] Deployment to cosc360.ok.ubc.ca (?)
     -   [x] Error handling (404)
-    -   [ ] Breadcrumbs
+-   [ ] Posts Feed
+    -   [ ] Home Page
+        -   [ ] Browse posts (registered or unregistered)
+            -   [ ] Asynchronous viewing (AJAX)
+    -   [ ] Search for items/posts by keyword (registered or unregistered)
 
 ### All
 
