@@ -68,11 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="text" class="form-control" id="title-post" name="title-post" placeholder="Enter post title">
                             <span class="text-danger"><?php echo $errors['title-post'] ?? ''; ?></span>
                         </div>
-                    <div class="mb-3">
-                        <label for="image-post" class="form-label">Image:</label>
-                        <input type="file" class="form-control" id="image-post" name="image-post" accept="image/*">
-                        <span class="text-danger"><?php echo $errors['image-post'] ?? ''; ?></span>
-                    </div>
                         <div class="mb-3">
                             <label for="image-post" class="form-label">Image:</label>
                             <input type="file" class="form-control" id="image-post" name="image-post" accept="image/*">
