@@ -14,42 +14,40 @@ $posts = $searchTerm ? Post::searchByKeyword($searchTerm) : Post::fetchAll();
 ?>
 
 <body>
-    <!-- Notice the form now includes method="post" and the action attribute points to the current page -->
-    <form action="" method="post" style="width: fit-content;">
-        <?php require "navbar.php"; ?>
-        <div class="main">
-            <?php
-            include "sidebarComponent.php";
-            ?>
+    <?php require "navbar.php"; ?>
+    <div class="main">
+        <?php
+        include "sidebarComponent.php";
+        ?>
 
-            <article id="feed">
-                <h2>Feed</h2>
-                <?php foreach ($posts as $post) : ?>
-                    <div class="post">
-                        <h3><?php echo htmlspecialchars($post->title); ?></h3>
-                        <p><?php echo htmlspecialchars($post->body); ?></p>
-                        <small>Posted by:
-                            <?php
-                            $user = User::getById($post->user_id);
-                            echo htmlspecialchars($user->username);
-                            ?>
-                        </small>
-                        <form action="submitComment.php" method="post">
-                            <input type="hidden" name="post_id" value="<?php echo $post->post_id; ?>">
-                            <textarea name="comment" placeholder="Write a comment..." required></textarea>
-                            <br><button type="submit">Submit Comment</button>
-                        </form>
-                    </div>
-                <?php endforeach; ?>
-            </article>
+        <article id="feed">
+            <h2>Feed</h2>
+            <?php foreach ($posts as $post) : ?>
+                <div class="post">
+                    <h3><?php echo htmlspecialchars($post->title); ?></h3>
+                    <p><?php echo htmlspecialchars($post->body); ?></p>
+                    <small>Posted by:
+                        <?php
+                        $user = User::getById($post->user_id);
+                        echo htmlspecialchars($user->username);
+                        ?>
+                    </small>
+                    <form action="submitComment.php" method="post">
+                        <input type="hidden" name="post_id" value="<?php echo $post->post_id; ?>">
+                        <textarea name="comment" placeholder="Write a comment..." required></textarea>
+                        <br><button type="submit">Submit Comment</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </article>
 
-            <article id="search-bar">
-                <!-- This input fields are now wrapped within the form tags -->
-                <input type="text" name="search" placeholder="Search posts">
-                <!-- Removed filter input for clarity since it's not used in the PHP code -->
-                <button type="submit">Search</button>
-            </article>
-        </div>
-    </form>
+        <article id="search-bar">
+            <!-- This input fields are now wrapped within the form tags -->
+            <input type="text" name="search" placeholder="Search posts">
+            <!-- Removed filter input for clarity since it's not used in the PHP code -->
+            <button type="submit">Search</button>
+        </article>
+    </div>
 </body>
+
 </html>
