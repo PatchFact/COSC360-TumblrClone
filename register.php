@@ -7,9 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['new-email'];
     $username = $_POST['username'];
     $password = $_POST['new-password'];
-    $admin_check = $_POST['admin-check'];
+    $admin_check = FALSE;
 
-    if (isset($admin_check)) {
+    if (isset($_POST['admin-check'])) {
         $admin_check = TRUE;
     } else {
         $admin_check = FALSE;
