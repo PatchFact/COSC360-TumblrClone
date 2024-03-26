@@ -80,6 +80,7 @@ This is the overall checklist needed for the project
             -   [x] Form validation
                 -   [x] Security (sanitizing input)
 -   [ ] My Posts
+
     -   [ ] User page
         -   [ ] Display posts
         -   [ ] Edit posts
@@ -101,6 +102,7 @@ This is the overall checklist needed for the project
 -   [ ] Posts
     -   [ ] userPost.php
         -   [ ] Comments
+            -   [ ] Asynchronous viewing (AJAX)
         -   [ ] Be able to edit if you are owner
     -   [x] Register users can
         -   [x] Make posts
