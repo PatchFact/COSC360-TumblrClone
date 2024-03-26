@@ -51,4 +51,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $postId > 0) {
     }
 }
 ?>
-

@@ -81,7 +81,7 @@ $following = User::getFollowing($user_id);
                                 <img src="serveProfilePic.php?userId=<?php echo $user_id ?>" alt="profilePic" class="main-pfp">
 
                             </div>
-                            <!-- Follow user button -->
+
                             <?php if ($user_id != $_SESSION['user_id']) : ?>
 
                                 <?php if (User::isFollowing($_SESSION['user_id'], $user_id)) : ?>
