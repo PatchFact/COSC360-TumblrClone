@@ -27,7 +27,6 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
     $commentBody = trim($_POST['commentBody']);
     if (!empty($commentBody)) {
         Comment::insertComment($commentBody, $currentUser->user_id, $postId);
-        // Optional: Redirect to the same post page to see the new comment
         header("Location: ".$_SERVER['PHP_SELF']."?postId=".$postId);
         exit();
     }
@@ -37,7 +36,7 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
 <head>
     <style>
         body {
-            background-color: lightgray; /* Light gray background */
+            background-color: lightgray;
         }
         .container {
             background-color: #fff;
@@ -57,11 +56,11 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
             object-fit: cover;
         }
         .post-details {
-            background-color: #fff; /* White background for the text box */
-            padding: 15px; /* Adds some space around the text */
-            margin: 20px auto; /* Adds margin to the top and bottom, centers horizontally */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
-            border-radius: 8px; /* Optional: rounds the corners */
+            background-color: #fff;
+            padding: 15px;
+            margin: 20px auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
             max-width: 600px;
             text-align: left;
         }
@@ -69,9 +68,9 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
             margin-bottom: 15px;
         }
         .edit-post-btn {
-            display: inline-block; /* Allows for centering */
+            display: inline-block;
             text-align: center;
-            margin-bottom: 20px; /* Spacing after the button */
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -79,7 +78,6 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
 <body>
     <?php require "navbar.php"; ?>
     <div class="container">
-        <!-- Post and Caption Layout -->
         <div class="post-container">
             <h2 style="margin-bottom: 20px;"><?php echo htmlspecialchars($post->title); ?></h2>
             <img src="servePostImage.php?postId=<?php echo $post->post_id; ?>" alt="Post Image" class="post-image">
@@ -93,7 +91,6 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
             </div>
         </div>
 
-        <!-- Comments Layout -->
         <hr>
         <h3>Comments</h3>
         <?php if ($currentUser): ?>
