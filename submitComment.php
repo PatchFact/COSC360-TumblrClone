@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "Comment.php";
+require "comment.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: loginPage.php");
@@ -23,4 +23,3 @@ if ($post_id && $comment) {
 
 header("Location: index.php");
 exit;
-?>

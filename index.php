@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 $pageTitle = "Ara Home";
 require_once "head.php";
 require_once "user.php";
 require_once "post.php";
 
-$posts = Post::fetchAll();
+// Check if a search term was submitted
+$searchTerm = isset($_POST['search']) ? $_POST['search'] : null;
 
+// Fetch posts based on whether a search term was provided
+$posts = $searchTerm ? Post::searchByKeyword($searchTerm) : Post::fetchAll();
 ?>
 
-
 <body>
-    <form action="search.php" method="post" style="width: fit-content"></form>
-    <?php require "navbar.php" ?>
+    <?php require "navbar.php"; ?>
     <div class="main">
         <?php
         include "sidebarComponent.php";
@@ -28,12 +28,10 @@ $posts = Post::fetchAll();
                     <p><?php echo htmlspecialchars($post->body); ?></p>
                     <small>Posted by:
                         <?php
-
                         $user = User::getById($post->user_id);
-
                         echo htmlspecialchars($user->username);
-
-                        ?></small>
+                        ?>
+                    </small>
                     <form action="submitComment.php" method="post">
                         <input type="hidden" name="post_id" value="<?php echo $post->post_id; ?>">
                         <textarea name="comment" placeholder="Write a comment..." required></textarea>
@@ -44,10 +42,11 @@ $posts = Post::fetchAll();
         </article>
 
         <article id="search-bar">
-            <input text="text" name="search" placeholder="Search posts">
-            <input text="text" name="filter" placeholder="Filter tags">
+            <!-- This input fields are now wrapped within the form tags -->
+            <input type="text" name="search" placeholder="Search posts">
+            <!-- Removed filter input for clarity since it's not used in the PHP code -->
+            <button type="submit">Search</button>
         </article>
-        </form>
     </div>
 </body>
 
