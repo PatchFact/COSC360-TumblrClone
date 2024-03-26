@@ -16,7 +16,6 @@ if ($postId > 0) {
         $stmtImg = $pdo->prepare("DELETE FROM post_img WHERE post_id = :postId");
         $stmtImg->execute([':postId' => $postId]);
 
-        // Next, delete the post itself
         $stmtPost = $pdo->prepare("DELETE FROM posts WHERE post_id = :postId");
         $stmtPost->execute([':postId' => $postId]);
 
