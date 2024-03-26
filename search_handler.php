@@ -9,13 +9,13 @@ if (session_status() == PHP_SESSION_NONE) {
 $searchTerm = isset($_POST['search']) ? trim($_POST['search']) : '';
 
 if (empty($searchTerm)) {
-    echo '<div class="alert alert-warning" role="alert">Please enter a search term.</div>';
-    exit;
+    $query = "SELECT * FROM users 
+    LEFT JOIN posts ON users.user_id = posts.user_id";
 }
 
 $query = "SELECT users.user_id, users.username, users.email, users.is_banned, posts.title, posts.body, posts.post_id FROM users 
           LEFT JOIN posts ON users.user_id = posts.user_id 
-          WHERE users.username LIKE :searchTerm OR users.email LIKE :searchTerm";
+          WHERE users.username LIKE :searchTerm OR users.email LIKE :searchTerm or posts.title LIKE :searchTerm or posts.body LIKE :searchTerm";
 
 $stmt = $pdo->prepare($query);
 $likeTerm = '%' . $searchTerm . '%';
