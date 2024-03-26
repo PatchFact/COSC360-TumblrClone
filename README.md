@@ -121,10 +121,6 @@ This is the overall checklist needed for the project
             -   [ ] Asynchronous viewing (AJAX)
     -   [ ] Search for items/posts by keyword (registered or unregistered)
 
-### All
-
--   [ ] Preliminary summary document
-
 ## Additional Functionality
 
 -   Search and analysis for topics/items
