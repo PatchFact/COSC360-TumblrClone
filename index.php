@@ -28,7 +28,7 @@ $posts = $searchTerm ? Post::searchByKeyword($searchTerm) : Post::fetchAll();
                             $user = User::getById($post->user_id);
                             ?>
                             <div class="col-9 mb-3">
-                                <a href="temporary.php?postId=<?php echo $post->post_id; ?>" class="text-decoration-none">
+                                <a href="userPost.php?postId=<?php echo $post->post_id; ?>" class="text-decoration-none">
                                     <div class="d-flex align-items-center p-2 border rounded bg-light">
                                         <img src="serveProfilePic.php?userId=<?php echo $user->user_id ?>" alt="User Profile" class="mr-3" style="width: 50px; height: 50px; border-radius: 50%;">
                                         <h3 class="mb-0 text-dark"><?php echo htmlspecialchars($post->title); ?></h3>
