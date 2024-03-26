@@ -79,10 +79,16 @@ This is the overall checklist needed for the project
                 -   [x] Stored in Database
             -   [x] Form validation
                 -   [x] Security (sanitizing input)
-    -   [ ] My Posts
+-   [ ] My Posts
+    -   [ ] User page
         -   [ ] Display posts
         -   [ ] Edit posts
         -   [ ] New post button
+    -   [ ] Home Page
+        -   [ ] Browse posts (registered or unregistered)
+            -   [ ] Asynchronous viewing (AJAX)
+    -   [ ] Search for items/posts by keyword (registered or unregistered)
+
 -   [x] Follow system
     -   [x] Followers
     -   [x] Following
@@ -93,17 +99,14 @@ This is the overall checklist needed for the project
 ### Katie
 
 -   [ ] Posts
-    -   [ ] Home Page
-    -   [ ] Browse posts (registered or unregistered)
-        -   [ ] Asynchronous viewing (AJAX)
+    -   [ ] userPost.php
+        -   [ ] Comments
+        -   [ ] Be able to edit if you are owner
     -   [x] Register users can
         -   [x] Make posts
             -   [x] Form validation
             -   [x] Security (sanitizing input)
         -   [ ] Make comments
-    -   [ ] Search for items/posts by keyword (registered or unregistered)
-    -   [ ] Database storage
-        -   [ ] Discussion threads (Posts)
 
 ### Jaidyn
 
