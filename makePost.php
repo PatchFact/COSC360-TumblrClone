@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 session_start();
-require "head.php"; // Ensure this includes Bootstrap CSS for styling
+require "head.php";
 require "db.php";
 
 $pageTitle = "Ara Create Post";

@@ -33,54 +33,6 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
 }
 ?>
 
-<head>
-    <style>
-        body {
-            background-color: lightgray;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .post-container {
-            text-align: center;
-        }
-
-        .post-image {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        .post-details {
-            background-color: #fff;
-            padding: 15px;
-            margin: 20px auto;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            max-width: 600px;
-            text-align: left;
-        }
-
-        .comment {
-            margin-bottom: 15px;
-        }
-
-        .edit-post-btn {
-            display: inline-block;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-
 <body>
     <?php require "navbar.php"; ?>
     <div class="container">
