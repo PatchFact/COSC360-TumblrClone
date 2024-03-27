@@ -98,14 +98,14 @@ This is the overall checklist needed for the project
 
 -   [ ] Posts
     -   [ ] userPost.php
-        -   [ ] Comments
+        -   [x] Comments
             -   [ ] Asynchronous viewing (AJAX)
-        -   [ ] Be able to edit if you are owner
+        -   [x] Be able to edit if you are owner
     -   [x] Register users can
         -   [x] Make posts
             -   [x] Form validation
             -   [x] Security (sanitizing input)
-        -   [ ] Make comments
+        -   [x] Make comments
 
 ### Jaidyn
 
