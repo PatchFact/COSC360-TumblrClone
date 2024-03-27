@@ -36,7 +36,7 @@ if (!empty($results)) {
             echo "<form action='toggleBanUser.php' method='post' class='d-inline-block m-2'>
                     <input type='hidden' name='user_id' value='" . htmlspecialchars($row['user_id']) . "'>
                     <input type='hidden' name='is_banned' value='" . htmlspecialchars($row['is_banned']) . "'>
-                    <button type='submit' class='btn btn-warning'>$banButtonText</button>
+                    <button type='submit' class='btn btn-warning' onclick='return confirm(\"Are you sure you want to $banButtonText this user?\"); '>$banButtonText</button>
                   </form>";
         }
         if (!empty($row['title'])) {

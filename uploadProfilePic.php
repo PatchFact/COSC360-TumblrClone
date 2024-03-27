@@ -18,8 +18,8 @@ if (isset($_POST["profilePic"])) {
             exit();
         }
 
-        // 5MB maximum filesize
-        $maxsize = 5 * 1024 * 1024;
+        // 2MB maximum filesize
+        $maxsize = 2 * 1024 * 1024;
         if ($file_size > $maxsize) {
             die("Error: File size is larger than the allowed limit.");
         }

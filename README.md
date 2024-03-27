@@ -79,31 +79,27 @@ This is the overall checklist needed for the project
                 -   [x] Stored in Database
             -   [x] Form validation
                 -   [x] Security (sanitizing input)
-    -   [ ] My Posts
-        -   [ ] Display posts
-        -   [ ] Edit posts
-        -   [ ] New post button
+-   [x] My Posts
 -   [x] Follow system
     -   [x] Followers
     -   [x] Following
 -   [x] Profile sidebar component
 -   [ ] Forgot password?
 -   [x] Routing errors/authorization
+-   [ ] Configure database `my.ini` in deployment for profile pictures
 
 ### Katie
 
--   [ ] Posts
-    -   [ ] Home Page
-    -   [ ] Browse posts (registered or unregistered)
-        -   [ ] Asynchronous viewing (AJAX)
+-   [x] Posts
+    -   [x] userPost.php
+        -   [x] Comments
+            -   [x] Asynchronous viewing (AJAX)
+        -   [x] Be able to edit if you are owner
     -   [x] Register users can
         -   [x] Make posts
             -   [x] Form validation
             -   [x] Security (sanitizing input)
-        -   [ ] Make comments
-    -   [ ] Search for items/posts by keyword (registered or unregistered)
-    -   [ ] Database storage
-        -   [ ] Discussion threads (Posts)
+        -   [x] Make comments
 
 ### Jaidyn
 
@@ -111,14 +107,13 @@ This is the overall checklist needed for the project
     -   [x] Search for user by name, email, post
     -   [x] Enable/disable user
     -   [x] Edit/remove Posts
--   [ ] Server-side
+-   [x] Server-side
     -   [x] Deployment to cosc360.ok.ubc.ca (?)
     -   [x] Error handling (404)
-    -   [ ] Breadcrumbs
-
-### All
-
--   [ ] Preliminary summary document
+-   [ ] Posts Feed
+    -   [x] Home Page
+        -   [x] Browse posts (registered or unregistered)
+    -   [ ] Search for items/posts by keyword (registered or unregistered)
 
 ## Additional Functionality
 
