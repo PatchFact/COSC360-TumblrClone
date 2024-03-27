@@ -95,4 +95,20 @@ class Post
             return null; // Return null if the post doesn't exist
         }
     }
+
+    public static function getPostsByUserId($user_id)
+    {
+        self::initPDO();
+
+        $query = "SELECT * FROM posts WHERE user_id = :user_id";
+        $stmt = self::$pdo->prepare($query);
+        $stmt->execute([':user_id' => $user_id]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $posts = array_map(function ($row) {
+            return new Post($row);
+        }, $rows);
+
+        return $posts;
+    }
 }

@@ -5,6 +5,7 @@
 $pageTitle = "Ara Profile";
 require_once "head.php";
 require_once "user.php";
+require_once "post.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: 404.php");
@@ -25,6 +26,7 @@ if (isset($_GET['userId'])) {
     $is_admin = $user->is_admin;
     $is_banned = $user->is_banned;
     $about_me = $user->about_me;
+    $posts = Post::getPostsByUserId($user_id);
 } else {
     header("Location: 404.php");
     exit();
@@ -148,6 +150,19 @@ $following = User::getFollowing($user_id);
                                 <hr>
                             </center>
 
+                            <?php foreach ($posts as $post) : ?>
+                                <?php
+                                $user = User::getById($post->user_id);
+                                ?>
+                                <div class="col-9 mb-3">
+                                    <a href="userPost.php?postId=<?php echo $post->post_id; ?>" class="text-decoration-none">
+                                        <div class="d-flex align-items-center p-2 border rounded bg-light">
+                                            <img src="serveProfilePic.php?userId=<?php echo $user->user_id ?>" alt="User Profile" class="mr-3" style="width: 50px; height: 50px; border-radius: 50%;">
+                                            <h3 class="mb-0 text-dark"><?php echo htmlspecialchars($post->title); ?></h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                             <hr class="mt-5 mb-5" style="border-color: lightgray; width: 100%">
 
                             <div class="container">

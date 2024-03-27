@@ -79,13 +79,7 @@ This is the overall checklist needed for the project
                 -   [x] Stored in Database
             -   [x] Form validation
                 -   [x] Security (sanitizing input)
--   [ ] My Posts
-
-    -   [ ] User page
-        -   [ ] Display posts
-        -   [ ] Edit posts
-        -   [ ] New post button
-
+-   [x] My Posts
 -   [x] Follow system
     -   [x] Followers
     -   [x] Following
