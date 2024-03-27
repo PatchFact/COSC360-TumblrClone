@@ -15,11 +15,16 @@ if ($currentUserId === null) {
 
 $errors = [];
 
+// 2MB maximum filesize
+$maxsize = 2 * 1024 * 1024;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = isset($_POST['title-post']) ? $_POST['title-post'] : '';
     $text = isset($_POST['text-post']) ? $_POST['text-post'] : '';
     $imgData = isset($_FILES['image-post']) ? file_get_contents($_FILES['image-post']['tmp_name']) : null;
-
+    if ($imgData && $_FILES['image-post']['size'] > $maxsize) {
+        $errors['image-post'] = "Error: File size is larger than the allowed limit.";
+    }
     if (empty($title)) {
         $errors['title-post'] = "Please input a title";
     }
