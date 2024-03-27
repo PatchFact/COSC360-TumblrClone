@@ -134,19 +134,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        alert(data.message); 
+                        alert(data.message);
                         if (data.status === "success") {
                             const submitBtn = form.querySelector(
                                 'input[type="submit"]'
                             );
                             const newStatus =
-                                formData.get("is_banned") == "1" ? "0" : "1"; 
-                            formData.set("is_banned", newStatus); 
+                                formData.get("is_banned") == "1" ? "0" : "1";
+                            formData.set("is_banned", newStatus);
                             submitBtn.value =
-                                submitBtn.value === "Ban" ? "Unban" : "Ban"; 
+                                submitBtn.value === "Ban" ? "Unban" : "Ban";
                             submitBtn.parentNode.querySelector(
                                 'input[name="is_banned"]'
-                            ).value = newStatus; 
+                            ).value = newStatus;
                         }
                     })
                     .catch((error) => console.error("Error:", error));
@@ -154,33 +154,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById('postForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-    
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("postForm");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
             const formData = new FormData(form);
-            
-            fetch('makePost.php', {
-                method: 'POST',
+
+            fetch("makePost.php", {
+                method: "POST",
                 body: formData,
             })
-            .then(response => response.text())
-            .then(html => {
-                // Process the response HTML here
-                // For example, display a success message or handle errors
-                console.log(html);
-                if (html.includes("Location: makePost.php")) {
-                    window.location.href = 'makePost.php';
-                } else {
-                    // Display error message to the user
-                    document.getElementById('responseContainer').innerHTML = 'Failed to create post. Please try again.';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                .then((response) => response.text())
+                .then((html) => {
+                    console.log(html);
+                    if (html.includes("Location: makePost.php")) {
+                        window.location.href = "makePost.php";
+                    } else {
+                        document.getElementById("responseContainer").innerHTML =
+                            "Failed to create post. Please try again.";
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
         });
     });
-
 });
