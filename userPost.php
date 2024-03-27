@@ -15,7 +15,6 @@ if (isset($_GET['postId'])) {
         exit();
     }
 
-    $comments = Comment::getByPostId($postId);
     $currentUser = isset($_SESSION['user_id']) ? User::getById($_SESSION['user_id']) : null;
     $poster = User::getById($post->user_id);
 } else {
@@ -62,20 +61,45 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
             </div>
             <hr>
         <?php endif; ?>
-        <?php if (!empty($comments)) : ?>
-            <?php foreach ($comments as $comment) : ?>
-                <div class="comment">
-                    <p><?php echo htmlspecialchars($comment->body); ?></p>
-                    <small>Comment by: <?php
-                                        $commentUser = User::getById($comment->user_id);
-                                        echo htmlspecialchars($commentUser->username);
-                                        ?></small>
-                </div>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <p>No comments yet.</p>
-        <?php endif; ?>
+
+        <div id="comments-section">
+            <!-- AJAX HERE -->
+        </div>
     </div>
 </body>
+
+<script>
+    $(document).ready(function() {
+        function fetchComments(post_id) {
+            $.ajax({
+                url: "fetchComments.php",
+                type: "GET",
+                data: {
+                    postId: post_id,
+                },
+                success: function(data) {
+                    var comments = JSON.parse(data);
+                    var commentsHtml = "";
+
+                    comments.forEach(function(comment) {
+                        commentsHtml +=
+                            '<div class="comment"><p>' +
+                            comment.body +
+                            "</p><small>Comment by: " +
+                            comment.username +
+                            "</small></div>";
+                    });
+
+                    $("#comments-section").html(commentsHtml);
+                },
+            });
+        }
+
+        fetchComments(<?php echo $postId; ?>);
+        setInterval(function() {
+            fetchComments(<?php echo $postId; ?>);
+        }, 1000);
+    });
+</script>
 
 </html>

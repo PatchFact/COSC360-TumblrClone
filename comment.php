@@ -4,6 +4,7 @@ class Comment
     public $comment_id;
     public $body;
     public $user_id;
+    public $username;
     public $post_id;
     public $visible;
     public $created_at;
@@ -21,6 +22,7 @@ class Comment
         $this->comment_id = $entry['comment_id'];
         $this->body = $entry['body'];
         $this->user_id = $entry['user_id'];
+        $this->username = User::getById($entry['user_id'])->username;
         $this->post_id = $entry['post_id'];
         $this->visible = $entry['visible'];
         $this->created_at = $entry['created_at'];
