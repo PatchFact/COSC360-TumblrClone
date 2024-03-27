@@ -48,6 +48,7 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
                     </div>
                 <?php endif; ?>
             </div>
+            <p>Posted by: <a href="profile.php?userId=<?php echo $poster->user_id; ?>"><?php echo htmlspecialchars($poster->username); ?></a></p>
         </div>
 
         <hr>
