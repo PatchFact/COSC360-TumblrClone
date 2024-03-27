@@ -76,7 +76,7 @@ class Post
         if ($imgSrc) {
             return $imgSrc['img_src'];
         } else {
-            return null; // Return null if no image found
+            return null;
         }
     }
 

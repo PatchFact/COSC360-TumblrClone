@@ -18,7 +18,7 @@ $errors = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = isset($_POST['title-post']) ? $_POST['title-post'] : '';
     $text = isset($_POST['text-post']) ? $_POST['text-post'] : '';
-    $imgData = null;
+    $imgData = isset($_FILES['image-post']) ? file_get_contents($_FILES['image-post']['tmp_name']) : null;
 
     if (empty($title)) {
         $errors['title-post'] = "Please input a title";

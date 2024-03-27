@@ -86,7 +86,9 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
     <div class="container">
         <div class="post-container">
             <h2 style="margin-bottom: 20px;"><?php echo htmlspecialchars($post->title); ?></h2>
+
             <img src="servePostImage.php?postId=<?php echo $post->post_id; ?>" alt="Post Image" class="post-image">
+
             <div class="post-details">
                 <p><?php echo htmlspecialchars($post->body); ?></p>
                 <?php if ($currentUser == $poster) : ?>
