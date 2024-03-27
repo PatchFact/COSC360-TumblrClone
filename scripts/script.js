@@ -154,39 +154,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-<<<<<<< HEAD
     document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById('postForm');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
     
-=======
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("postForm");
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
->>>>>>> d853c4634406cb00b382c61888d57af150270201
             const formData = new FormData(form);
 
             fetch("makePost.php", {
                 method: "POST",
                 body: formData,
             })
-<<<<<<< HEAD
-            .then(response => response.text())
-            .then(html => {
-                console.log(html);
-                if (html.includes("Location: makePost.php")) {
-                    window.location.href = 'makePost.php';
-                } else {
-                    document.getElementById('responseContainer').innerHTML = 'Failed to create post. Please try again.';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-=======
                 .then((response) => response.text())
                 .then((html) => {
                     console.log(html);
@@ -200,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch((error) => {
                     console.error("Error:", error);
                 });
->>>>>>> d853c4634406cb00b382c61888d57af150270201
         });
     });
 });
