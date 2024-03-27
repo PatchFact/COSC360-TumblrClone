@@ -96,10 +96,10 @@ This is the overall checklist needed for the project
 
 ### Katie
 
--   [ ] Posts
-    -   [ ] userPost.php
+-   [x] Posts
+    -   [x] userPost.php
         -   [x] Comments
-            -   [ ] Asynchronous viewing (AJAX)
+            -   [x] Asynchronous viewing (AJAX)
         -   [x] Be able to edit if you are owner
     -   [x] Register users can
         -   [x] Make posts
@@ -119,7 +119,6 @@ This is the overall checklist needed for the project
 -   [ ] Posts Feed
     -   [x] Home Page
         -   [x] Browse posts (registered or unregistered)
-            -   [x] Asynchronous viewing (AJAX)
     -   [ ] Search for items/posts by keyword (registered or unregistered)
 
 ## Additional Functionality
