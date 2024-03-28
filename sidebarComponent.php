@@ -24,7 +24,7 @@ if (isset($_SESSION['user_id'])) {
         </center>
         <section>Followers (<?php echo $follower_number ?>)</section>
         <section>Following (<?php echo $following_number ?>)</section>
-        <section><a href="profile.php">My Posts</a></section>
+        <section><a href="profile.php?userId=<?php echo $_SESSION['user_id'] ?>">Profile</a></section>
     <?php endif; ?>
 
     <?php if ($is_admin) : ?>

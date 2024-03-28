@@ -47,7 +47,7 @@ $imageSource = Post::getImageSource($post->post_id);
             <?php else : ?>
                 <p></p>
             <?php endif; ?>
-
+            
             <div class="post-details">
                 <p><?php echo htmlspecialchars($post->body); ?></p>
                 <?php if ($currentUser == $poster) : ?>

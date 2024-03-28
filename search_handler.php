@@ -1,6 +1,8 @@
 <?php
-require 'db.php';
-require 'head.php';
+require_once 'db.php';
+require_once 'head.php';
+require_once 'user.php';
+require_once 'post.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -42,6 +44,9 @@ if (!empty($results)) {
         if (!empty($row['title'])) {
             echo '<div class="list-group-item">';
             echo '<h5 class="mb-1">' . htmlspecialchars($row['title']) . '</h5>';
+            if (!empty($row['post_image'])) {
+                echo '<img src="' . htmlspecialchars($row['post_image']) . '" style="max-width: 300px; height: auto;" alt="Post Image">';
+            }
             echo '<p class="mb-1">' . htmlspecialchars($row['body']) . '</p>';
             echo "<form action='deletePost.php' method='post' class='d-inline-block'>
                     <input type='hidden' name='post_id' value='" . htmlspecialchars($row['post_id']) . "'>
