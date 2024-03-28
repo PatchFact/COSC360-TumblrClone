@@ -35,7 +35,6 @@ $posts = $searchPostTerm ? Post::searchByKeyword($searchPostTerm) : Post::fetchA
                             </form>
                         </div>
                         <div class="col-12 mb-3" style="max-height: 300px; overflow-y: scroll;">
-                            <?php $postCount = 0; ?>
                             <?php foreach ($posts as $post) : ?>
                                 <?php
                                 $user = User::getById($post->user_id);
@@ -46,8 +45,6 @@ $posts = $searchPostTerm ? Post::searchByKeyword($searchPostTerm) : Post::fetchA
                                         <h3 class="mb-0 text-dark"><?php echo htmlspecialchars($post->title); ?></h3>
                                     </div>
                                 </a>
-                                <?php $postCount++; ?>
-                                <?php if ($postCount >= 5) break; ?>
                             <?php endforeach; ?>
                         </div>
                         <div class="col-12 mb-3">
@@ -61,7 +58,6 @@ $posts = $searchPostTerm ? Post::searchByKeyword($searchPostTerm) : Post::fetchA
                             </form>
                         </div>
                         <div class="col-12 mb-3" style="max-height: 300px; overflow-y: scroll;">
-                            <?php $userCount = 0; ?>
                             <?php foreach ($users as $user) : ?>
                                 <a href="profile.php?userId=<?php echo $user->user_id; ?>" class="text-decoration-none">
                                     <div class="d-flex align-items-center p-2 border rounded bg-light">
@@ -69,8 +65,6 @@ $posts = $searchPostTerm ? Post::searchByKeyword($searchPostTerm) : Post::fetchA
                                         <h3 class="mb-0 text-dark"><?php echo htmlspecialchars($user->username); ?></h3>
                                     </div>
                                 </a>
-                                <?php $userCount++; ?>
-                                <?php if ($userCount >= 5) break; ?>
                             <?php endforeach; ?>
                         </div>
                     </div>
