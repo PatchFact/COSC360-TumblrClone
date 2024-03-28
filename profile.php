@@ -187,7 +187,7 @@ $following = User::getFollowing($user_id);
 
                                         <?php
                                         foreach ($following as $follow) {
-                                            echo "<a href=\"profile.php?userId=$follow->user_id\" style=\"color: #007B7F\">" . $follow->username . "</a>";
+                                            echo "<a href=\"profile.php?userId=$follow->user_id\" style=\"color: #007B7F\">" . $follow->username . "</a><br>";
                                         }
                                         ?>
                                     </center>
