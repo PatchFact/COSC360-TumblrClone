@@ -44,6 +44,18 @@ class Post
         return $posts;
     }
 
+    public static function hasImage()
+    {
+        self::initPDO();
+
+        $query = "SELECT COUNT(*) FROM post_img WHERE post_id = :post_id";
+        $stmt = self::$pdo->prepare($query);
+        $stmt->execute(['post_id' => $this->post_id]);
+        $count = $stmt->fetchColumn();
+
+        return $count > 0;
+    }
+
     public static function searchByKeyword($keyword)
     {
         self::initPDO();
@@ -92,7 +104,7 @@ class Post
         if ($post) {
             return new self($post);
         } else {
-            return null; // Return null if the post doesn't exist
+            return null;
         }
     }
 

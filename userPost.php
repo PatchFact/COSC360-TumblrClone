@@ -32,13 +32,21 @@ if (isset($_POST['submitComment'], $_POST['commentBody']) && $currentUser) {
 }
 ?>
 
+<?php
+$imageSource = Post::getImageSource($post->post_id);
+?>
+
 <body>
     <?php require "navbar.php"; ?>
     <div class="container">
         <div class="post-container">
             <h2 style="margin-bottom: 20px;"><?php echo htmlspecialchars($post->title); ?></h2>
 
-            <img src="servePostImage.php?postId=<?php echo $post->post_id; ?>" alt="Post Image" class="post-image">
+            <?php if ($imageSource) : ?>
+                <img src="servePostImage.php?postId=<?php echo $post->post_id; ?>" alt="Post Image" class="post-image">
+            <?php else : ?>
+                <p></p>
+            <?php endif; ?>
 
             <div class="post-details">
                 <p><?php echo htmlspecialchars($post->body); ?></p>
