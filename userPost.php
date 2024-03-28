@@ -41,7 +41,6 @@ $imageSource = Post::getImageSource($post->post_id);
     <div class="container">
         <div class="post-container">
             <h2 style="margin-bottom: 20px;"><?php echo htmlspecialchars($post->title); ?></h2>
-
             <?php if ($imageSource) : ?>
                 <img src="servePostImage.php?postId=<?php echo $post->post_id; ?>" alt="Post Image" class="post-image">
             <?php else : ?>

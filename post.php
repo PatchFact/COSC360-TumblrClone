@@ -128,13 +128,8 @@ class Post
     }
 
     public function deleteImage() {
-        // Prepare the SQL statement
         $stmt = $this->pdo->prepare("DELETE FROM post_img WHERE post_id = :post_id");
-    
-        // Execute the statement with the post_id parameter
         $result = $stmt->execute([':post_id' => $this->post_id]);
-    
-        // Return the result of the operation
         return $result;
     }
 }
