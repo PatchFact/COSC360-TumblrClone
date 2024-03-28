@@ -4,4 +4,9 @@
     define("DBUSER", "18288647");
     define("DBPASS", "18288647");
 
+    // define("DBHOST", "localhost");
+    // define("DBNAME", "ara");
+    // define("DBUSER", "tester");
+    // define("DBPASS", "");
+
 
