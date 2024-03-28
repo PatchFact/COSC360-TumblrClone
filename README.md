@@ -86,7 +86,6 @@ This is the overall checklist needed for the project
 -   [x] Profile sidebar component
 -   [ ] Forgot password?
 -   [x] Routing errors/authorization
--   [ ] Configure database `my.ini` in deployment for profile pictures
 
 ### Katie
 
