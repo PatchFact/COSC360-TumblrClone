@@ -43,19 +43,7 @@ class Post
 
         return $posts;
     }
-
-    public static function hasImage()
-    {
-        self::initPDO();
-
-        $query = "SELECT COUNT(*) FROM post_img WHERE post_id = :post_id";
-        $stmt = self::$pdo->prepare($query);
-        $stmt->execute(['post_id' => $this->post_id]);
-        $count = $stmt->fetchColumn();
-
-        return $count > 0;
-    }
-
+    
     public static function searchByKeyword($keyword)
     {
         self::initPDO();
@@ -122,5 +110,31 @@ class Post
         }, $rows);
 
         return $posts;
+    }
+
+    public function update()
+    {
+        self::initPDO();
+
+        $query = "UPDATE posts SET title = :title, body = :body WHERE post_id = :post_id";
+        $stmt = self::$pdo->prepare($query);
+        $stmt->execute([
+            ':title' => $this->title,
+            ':body' => $this->body,
+            ':post_id' => $this->post_id
+        ]);
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function deleteImage() {
+        // Prepare the SQL statement
+        $stmt = $this->pdo->prepare("DELETE FROM post_img WHERE post_id = :post_id");
+    
+        // Execute the statement with the post_id parameter
+        $result = $stmt->execute([':post_id' => $this->post_id]);
+    
+        // Return the result of the operation
+        return $result;
     }
 }
