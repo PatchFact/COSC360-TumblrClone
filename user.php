@@ -18,6 +18,38 @@ class User
         }
     }
 
+    public static function fetchAll()
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("SELECT * FROM users");
+        $stmt->execute();
+        $users = $stmt->fetchAll();
+
+        $userObjects = [];
+        foreach ($users as $user) {
+            $userObjects[] = new User($user);
+        }
+
+        return $userObjects;
+    }
+
+    public static function searchByUsername($username)
+    {
+        self::initPDO();
+
+        $stmt = self::$pdo->prepare("SELECT * FROM users WHERE username LIKE :username");
+        $stmt->execute(['username' => '%' . $username . '%']);
+        $users = $stmt->fetchAll();
+
+        $userObjects = [];
+        foreach ($users as $user) {
+            $userObjects[] = new User($user);
+        }
+
+        return $userObjects;
+    }
+
     private function __construct($entry)
     {
         $this->user_id = $entry['user_id'];

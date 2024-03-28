@@ -1,6 +1,8 @@
 <?php
-require 'db.php';
-require 'head.php';
+require_once 'db.php';
+require_once 'head.php';
+require_once 'user.php';
+require_once 'post.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -9,51 +11,49 @@ if (session_status() == PHP_SESSION_NONE) {
 $searchTerm = isset($_POST['search']) ? trim($_POST['search']) : '';
 
 if (empty($searchTerm)) {
-    $query = "SELECT * FROM users 
-    LEFT JOIN posts ON users.user_id = posts.user_id";
+    $users = User::fetchAll();
+} else {
+    $users = User::searchByUsername($searchTerm);
 }
 
-$query = "SELECT users.user_id, users.username, users.email, users.is_banned, posts.title, posts.body, posts.post_id FROM users 
-          LEFT JOIN posts ON users.user_id = posts.user_id 
-          WHERE users.username LIKE :searchTerm OR users.email LIKE :searchTerm or posts.title LIKE :searchTerm or posts.body LIKE :searchTerm";
-
-$stmt = $pdo->prepare($query);
-$likeTerm = '%' . $searchTerm . '%';
-$stmt->execute([':searchTerm' => $likeTerm]);
-
-$results = $stmt->fetchAll();
+$results = [];
+foreach ($users as $user) {
+    $posts = Post::getPostsByUserId($user->user_id);
+    $results[$user->user_id] = ['user' => $user, 'posts' => $posts];
+}
 
 if (!empty($results)) {
     echo '<div class="list-group">';
-    $currentUsername = '';
-    foreach ($results as $row) {
-        if ($currentUsername !== $row['username']) {
-            echo '<a href="#" class="list-group-item list-group-item-action active" aria-current="true">';
-            echo 'User: ' . htmlspecialchars($row['username']) . ' - Email: ' . htmlspecialchars($row['email']);
-            echo '</a>';
-            $currentUsername = $row['username'];
-            $banButtonText = $row['is_banned'] ? 'Unban' : 'Ban';
-            echo "<form action='toggleBanUser.php' method='post' class='d-inline-block m-2'>
-                    <input type='hidden' name='user_id' value='" . htmlspecialchars($row['user_id']) . "'>
-                    <input type='hidden' name='is_banned' value='" . htmlspecialchars($row['is_banned']) . "'>
-                    <button type='submit' class='btn btn-warning' onclick='return confirm(\"Are you sure you want to $banButtonText this user?\"); '>$banButtonText</button>
-                  </form>";
-        }
-        if (!empty($row['title'])) {
-            echo '<div class="list-group-item">';
-            echo '<h5 class="mb-1">' . htmlspecialchars($row['title']) . '</h5>';
-            echo '<p class="mb-1">' . htmlspecialchars($row['body']) . '</p>';
-            echo "<form action='deletePost.php' method='post' class='d-inline-block'>
-                    <input type='hidden' name='post_id' value='" . htmlspecialchars($row['post_id']) . "'>
-                    <button type='submit' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this post?\");'>Delete</button>
-                  </form>";
-            echo "<form action='editPost.php' method='get' class='d-inline-block m-2'>
-                    <input type='hidden' name='postId' value='" . htmlspecialchars($row['post_id']) . "'>
-                    <button type='submit' class='btn btn-primary'>Edit</button>
-                  </form>";
-            echo '</div>';
-            echo '<br>';
-        }
+    foreach ($results as $userId => $userData) {
+        $user = $userData['user'];
+        echo '<a href="#" class="list-group-item list-group-item-action active" aria-current="true">';
+        echo 'User: ' . htmlspecialchars($user->username) . ' - Email: ' . htmlspecialchars($user->email);
+        echo '</a>';
+        $banButtonText = $user->is_banned ? 'Unban' : 'Ban';
+        echo "<form action='toggleBanUser.php' method='post' class='d-inline-block m-2'>
+                <input type='hidden' name='user_id' value='" . htmlspecialchars($user->user_id) . "'>
+                <input type='hidden' name='is_banned' value='" . htmlspecialchars($user->is_banned) . "'>
+                <button type='submit' class='btn btn-warning' onclick='return confirm(\"Are you sure you want to $banButtonText this user?\"); '>$banButtonText</button>
+              </form>";
+        foreach ($userData['posts'] as $post) {
+                echo '<div class="list-group-item">';
+                $imageSource = Post::getImageSource($post->post_id);
+                if ($imageSource) {
+                        echo '<img src="servePostImage.php?postId=' . htmlspecialchars($post->post_id) . '" alt="Post Image" class="post-image" style="width: 100px; height: 100px; float: left; margin-right: 10px;">';
+                }
+                echo '<h5 class="mb-1">' . htmlspecialchars($post->title) . '</h5>';
+                echo '<p class="mb-1">' . htmlspecialchars($post->body) . '</p>';
+                echo "<form action='deletePost.php' method='post' class='d-inline-block'>
+                                <input type='hidden' name='post_id' value='" . htmlspecialchars($post->post_id) . "'>
+                                <button type='submit' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this post?\");'>Delete</button>
+                            </form>";
+                echo "<form action='editPost.php' method='get' class='d-inline-block m-2'>
+                                <input type='hidden' name='postId' value='" . htmlspecialchars($post->post_id) . "'>
+                                <button type='submit' class='btn btn-primary'>Edit</button>
+                            </form>";
+                echo '</div>';
+                echo '<br>';
+            }
     }
     echo '</div>';
 } else {

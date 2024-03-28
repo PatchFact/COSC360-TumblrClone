@@ -43,7 +43,7 @@ class Post
 
         return $posts;
     }
-
+    
     public static function searchByKeyword($keyword)
     {
         self::initPDO();
@@ -92,7 +92,7 @@ class Post
         if ($post) {
             return new self($post);
         } else {
-            return null; // Return null if the post doesn't exist
+            return null;
         }
     }
 
@@ -110,5 +110,31 @@ class Post
         }, $rows);
 
         return $posts;
+    }
+
+    public function update()
+    {
+        self::initPDO();
+
+        $query = "UPDATE posts SET title = :title, body = :body WHERE post_id = :post_id";
+        $stmt = self::$pdo->prepare($query);
+        $stmt->execute([
+            ':title' => $this->title,
+            ':body' => $this->body,
+            ':post_id' => $this->post_id
+        ]);
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function deleteImage() {
+        // Prepare the SQL statement
+        $stmt = $this->pdo->prepare("DELETE FROM post_img WHERE post_id = :post_id");
+    
+        // Execute the statement with the post_id parameter
+        $result = $stmt->execute([':post_id' => $this->post_id]);
+    
+        // Return the result of the operation
+        return $result;
     }
 }
