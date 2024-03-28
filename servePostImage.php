@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once 'Post.php';
+require_once 'post.php';
 
 $postId = isset($_GET['postId']) ? (int)$_GET['postId'] : 0;
 $imageData = Post::getImageSource($postId);
