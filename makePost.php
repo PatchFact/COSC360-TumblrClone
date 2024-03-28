@@ -15,7 +15,6 @@ if ($currentUserId === null) {
 
 $errors = [];
 
-// 2MB maximum filesize
 $maxsize = 2 * 1024 * 1024;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

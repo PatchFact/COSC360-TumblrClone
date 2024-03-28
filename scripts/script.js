@@ -154,11 +154,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("postForm");
-        form.addEventListener("submit", function (e) {
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('postForm');
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-
+    
             const formData = new FormData(form);
 
             fetch("makePost.php", {
