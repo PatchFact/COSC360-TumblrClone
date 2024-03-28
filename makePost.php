@@ -15,7 +15,7 @@ if ($currentUserId === null) {
 
 $errors = [];
 
-$maxsize = 10 * 1024 * 1024;
+$maxsize = 2 * 1024 * 1024;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = isset($_POST['title-post']) ? $_POST['title-post'] : '';
